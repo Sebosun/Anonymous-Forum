@@ -3,9 +3,10 @@ import "./App.css";
 import Thread from "./components/Thread";
 
 function App() {
+  const [postNumeration, setPostNumeration] = useState(1);
   const [threadPosts, setThreadPosts] = useState([
     {
-      postNo: 1,
+      postNo: postNumeration,
       title: "First post",
       time: new Date(),
       text: "Hello World",
@@ -13,7 +14,7 @@ function App() {
   ]);
 
   let dupa = {
-    postNo: 1,
+    postNo: postNumeration,
     title: "First post",
     time: new Date(),
     text: "Hello World",
@@ -25,19 +26,28 @@ function App() {
     setThreadPosts(emptyThread);
   }
 
+  function updatePostNumber() {
+    setPostNumeration(postNumeration + 1);
+  }
+  useEffect(() => {
+    updatePostNumber();
+  }, [threadPosts]);
+
   return (
     <div className="App">
-      {threadPosts.map((thread, index) => {
-        return (
-          <Thread
-            index={index}
-            postNo={thread.postNo}
-            title={thread.title}
-            time={thread.time.toString()}
-            text={thread.text}
-          />
-        );
-      })}
+      <div className="Threads">
+        {threadPosts.map((thread, index) => {
+          return (
+            <Thread
+              index={index}
+              postNo={thread.postNo}
+              title={thread.title}
+              time={thread.time.toString()}
+              text={thread.text}
+            />
+          );
+        })}
+      </div>
       <button onClick={() => addNewThread(dupa)}>Add dupa</button>
     </div>
   );
