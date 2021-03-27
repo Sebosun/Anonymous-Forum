@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Thread.css";
+import Post from "./Post.js";
 
 function Thread(props) {
   return (
@@ -10,6 +11,10 @@ function Thread(props) {
         <div>{props.time}</div>
         <div>{props.text}</div>
       </div>
+      <Post postNo={2} title={"Dupa"} time={"Today"} text={"Funney text"} />
+      <Post postNo={2} title={"Dupa"} time={"Today"} text={"Funney text"} />
+      <Post postNo={2} title={"Dupa"} time={"Today"} text={"Funney text"} />
+      <Post postNo={2} title={"Dupa"} time={"Today"} text={"Funney text"} />
     </div>
   );
 }

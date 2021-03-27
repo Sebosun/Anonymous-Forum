@@ -1,6 +1,7 @@
 .Thread{
   padding: 10px;
   background-color: #1c1c1c;
+  border-bottom: 2px solid gray;
 }
 
 .threadContainer{
