@@ -6,15 +6,20 @@ function Thread(props) {
   return (
     <div className="Thread">
       <div className="threadContainer">
-        <div>{props.postNo}</div>
+        <div>Anyonymous</div>
         <div>{props.title}</div>
         <div>{props.time}</div>
-        <div>{props.text}</div>
+        <div>No. {props.postNo}</div>
+        <div id="postText">{props.text}</div>
       </div>
-      <Post postNo={2} title={"Dupa"} time={"Today"} text={"Funney text"} />
-      <Post postNo={2} title={"Dupa"} time={"Today"} text={"Funney text"} />
-      <Post postNo={2} title={"Dupa"} time={"Today"} text={"Funney text"} />
-      <Post postNo={2} title={"Dupa"} time={"Today"} text={"Funney text"} />
+      <Post
+        postNo={2}
+        title={"Dupa"}
+        time={"Today"}
+        text={
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        }
+      />
     </div>
   );
 }

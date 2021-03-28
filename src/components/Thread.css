@@ -8,4 +8,17 @@
   height: 8rem;
   padding: 10px;
   color: silver;
+  padding: 10px;
+  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: 0.5rem 2fr;
+  grid-gap: 10px;
+  text-align: left;
+  font-size: 0.8vw;
+  align-self: stretch;
+}
+
+#user{
+ color: #00ff46;
 }
