@@ -1,12 +1,23 @@
+#root{
+  margin: 0;
+  padding: 0;
+}
+
 body{
+  margin: 0;
+  padding: 0;
   text-align: center;
   background: #1c1c1c;
 }
 
 .App{
-  background-color: #302f2f;
 }
 
 .Threads{
+  width: 100%;
+}
+
+.header{
+  top: 0;
   width: 100%;
 }
