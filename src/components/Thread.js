@@ -6,10 +6,12 @@ function Thread(props) {
   return (
     <div className="Thread">
       <div className="threadContainer">
-        <div>Anyonymous</div>
-        <div>{props.title}</div>
-        <div>{props.time}</div>
-        <div>No. {props.postNo}</div>
+        <div className="threadInfo">
+          <div id="user">Anyonymous</div>
+          <div>{props.title}</div>
+          <div>{props.time}</div>
+          <div>No. {props.postNo}</div>
+        </div>
         <div id="postText">{props.text}</div>
       </div>
       <Post
