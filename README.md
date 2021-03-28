@@ -1,2 +1,2 @@
-# A Chan-like site build using React
+# A Chan-like site built using React
 Currently in development :) 
