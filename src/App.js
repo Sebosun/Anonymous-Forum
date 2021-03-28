@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Thread from "./components/Thread";
+import Header from "./components/Header";
 
 function App() {
   const [postNumeration, setPostNumeration] = useState(1);
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <div className="Threads">
         {threadPosts.map((thread, index) => {
           return (
