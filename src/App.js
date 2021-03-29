@@ -11,6 +11,7 @@ function App() {
       title: "First post",
       time: new Date(),
       text: "Hello World",
+      posts: {},
     },
   ]);
 
