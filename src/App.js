@@ -29,12 +29,39 @@ function App() {
     setThreadPosts(emptyThread);
   }
 
- // increases firestore count
-  function increaseCount() {
+  // increases firestore count
+  function incrPostNo() {
     const db = firebase.firestore();
     const increment = firebase.firestore.FieldValue.increment(1);
     const postNoRef = db.collection("meta").doc("data");
     postNoRef.update({ postNo: increment });
+  }
+
+    // test for getting stuff from thread posts, will setup collections within threads themselves
+  // function getCurPostNo(){
+  //     const db = firebase.firestore();
+  //     db.collection("test").onSnapshot((serverUpdate) => {
+  //         const mainPosts = serverUpdate.docs.map((_doc) =>{
+  //             const data = _doc.data();
+  //             console.log(data);
+  //         }
+  //         )
+  //     })
+  // }
+
+
+    //gets the postNo from the meta collection
+  function getCurPostNo() {
+    const db = firebase.firestore();
+    const data = db.collection("meta").doc("data");
+
+    data.get().then((doc) => {
+      if (doc.exists) {
+        console.log("Doc data", doc.data());
+      } else {
+        console.log("PostNo not found");
+      }
+    });
   }
 
   function updatePostNumber() {
@@ -62,9 +89,7 @@ function App() {
         })}
       </div>
       <button onClick={() => addNewThread(genPost)}>Add dupa</button>
-        <button onClick={() => increaseCount()}>
-            Firestore add!
-        </button>
+      <button onClick={() => getCurPostNo()}>Firestore add!</button>
     </div>
   );
 }
