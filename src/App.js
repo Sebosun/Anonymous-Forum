@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Thread from "./components/Thread";
 import Header from "./components/Header";
+import { firebase } from "@firebase/app";
 
 function App() {
   const [postNumeration, setPostNumeration] = useState(1);
@@ -15,7 +16,7 @@ function App() {
     },
   ]);
 
-  let dupa = {
+  let genPost = {
     postNo: postNumeration,
     title: "First post",
     time: new Date(),
@@ -28,9 +29,18 @@ function App() {
     setThreadPosts(emptyThread);
   }
 
+ // increases firestore count
+  function increaseCount() {
+    const db = firebase.firestore();
+    const increment = firebase.firestore.FieldValue.increment(1);
+    const postNoRef = db.collection("meta").doc("data");
+    postNoRef.update({ postNo: increment });
+  }
+
   function updatePostNumber() {
     setPostNumeration(postNumeration + 1);
   }
+
   useEffect(() => {
     updatePostNumber();
   }, [threadPosts]);
@@ -51,7 +61,10 @@ function App() {
           );
         })}
       </div>
-      <button onClick={() => addNewThread(dupa)}>Add dupa</button>
+      <button onClick={() => addNewThread(genPost)}>Add dupa</button>
+        <button onClick={() => increaseCount()}>
+            Firestore add!
+        </button>
     </div>
   );
 }
