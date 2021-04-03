@@ -16,19 +16,6 @@ function App() {
     },
   ]);
 
-  let genPost = {
-    postNo: postNumeration,
-    title: "First post",
-    time: new Date(),
-    text: "Hello World",
-  };
-
-  // function addNewThread(thread) {
-  //   let emptyThread = [...threadPosts];
-  //   emptyThread.push(thread);
-  //   setThreadPosts(emptyThread);
-  // }
-
   // increases firestore count
   function incrPostNo() {
     const db = firebase.firestore();
@@ -81,6 +68,22 @@ function App() {
     });
   }
 
+  function getThreads() {
+    const board = firebase.firestore().collection("board");
+
+    board
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          // doc.data() is never undefined for query doc snapshots
+          console.log(doc.id, " => ", doc.data());
+        });
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  }
+
   return (
     <div className="App">
       <Header />
@@ -97,7 +100,6 @@ function App() {
           );
         })}
       </div>
-      <button onClick={() => addNewThread(genPost)}>Add dupa</button>
       <button
         onClick={() => {
           getCurPostNo().then((resolve) => console.log(resolve));
@@ -115,8 +117,9 @@ function App() {
           })
         }
       >
-        ADd thread to firse
+        Add thread to firse
       </button>
+      <button onClick={() => getThreads()}> Get Threads</button>
     </div>
   );
 }
