@@ -58,14 +58,16 @@ function App() {
     // since getCurPosNo returns a promise, we need first to wait before we add it to the board (async required to use await here)
     const postNo = await getCurPostNo();
 
-    board.add({
-      name: thread.name,
-      text: thread.text,
-      title: thread.title,
-      user: "Anyonymous",
-      postNo: postNo,
-      created: firebase.firestore.FieldValue.serverTimestamp(),
-    });
+    board
+      .add({
+        name: thread.name,
+        text: thread.text,
+        title: thread.title,
+        user: "Anyonymous",
+        postNo: postNo,
+        created: firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      .then(incrPostNo());
   }
 
   function getThreads() {
