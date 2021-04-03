@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import { firebase } from "@firebase/app";
 
 function App() {
-  const [postNumeration, setPostNumeration] = useState(1);
+  const [postNumeration, setPostNumeration] = useState(0);
   const [threadPosts, setThreadPosts] = useState([
     {
       postNo: postNumeration,
@@ -23,11 +23,11 @@ function App() {
     text: "Hello World",
   };
 
-  function addNewThread(thread) {
-    let emptyThread = [...threadPosts];
-    emptyThread.push(thread);
-    setThreadPosts(emptyThread);
-  }
+  // function addNewThread(thread) {
+  //   let emptyThread = [...threadPosts];
+  //   emptyThread.push(thread);
+  //   setThreadPosts(emptyThread);
+  // }
 
   // increases firestore count
   function incrPostNo() {
@@ -37,7 +37,7 @@ function App() {
     postNoRef.update({ postNo: increment });
   }
 
-    // test for getting stuff from thread posts, will setup collections within threads themselves
+  // test for getting stuff from thread posts, will setup collections within threads themselves
   // function getCurPostNo(){
   //     const db = firebase.firestore();
   //     db.collection("test").onSnapshot((serverUpdate) => {
@@ -49,28 +49,37 @@ function App() {
   //     })
   // }
 
-
-    //gets the postNo from the meta collection
+  //gets the postNo from the meta collection
   function getCurPostNo() {
     const db = firebase.firestore();
     const data = db.collection("meta").doc("data");
 
-    data.get().then((doc) => {
+    const postNo = data.get().then((doc) => {
       if (doc.exists) {
-        console.log("Doc data", doc.data());
+        return doc.data().postNo;
       } else {
-        console.log("PostNo not found");
+        return 0;
       }
     });
+
+    return postNo;
   }
 
-  function updatePostNumber() {
-    setPostNumeration(postNumeration + 1);
-  }
+  async function addNewThread(thread) {
+    const db = firebase.firestore();
+    const board = db.collection("board");
+    // since getCurPosNo returns a promise, we need first to wait before we add it to the board (async required to use await here)
+    const postNo = await getCurPostNo();
 
-  useEffect(() => {
-    updatePostNumber();
-  }, [threadPosts]);
+    board.add({
+      name: thread.name,
+      text: thread.text,
+      title: thread.title,
+      user: "Anyonymous",
+      postNo: postNo,
+      created: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+  }
 
   return (
     <div className="App">
@@ -89,7 +98,25 @@ function App() {
         })}
       </div>
       <button onClick={() => addNewThread(genPost)}>Add dupa</button>
-      <button onClick={() => getCurPostNo()}>Firestore add!</button>
+      <button
+        onClick={() => {
+          getCurPostNo().then((resolve) => console.log(resolve));
+        }}
+      >
+        Print post no
+      </button>
+      <button onClick={() => incrPostNo()}>Firestore add!</button>
+      <button
+        onClick={() =>
+          addNewThread({
+            name: "First",
+            text: "Hello world",
+            title: "Title!",
+          })
+        }
+      >
+        ADd thread to firse
+      </button>
     </div>
   );
 }
