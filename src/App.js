@@ -70,20 +70,10 @@ function App() {
       .then(incrPostNo());
   }
 
-  function getThreads() {
-    const board = firebase.firestore().collection("board");
-
-    board
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data());
-        });
-      })
-      .catch((error) => {
-        console.log("Error getting documents: ", error);
-      });
+  async function getThreads() {
+    const board = await firebase.firestore().collection("board").get();
+    const mappedBoard = board.docs.map((doc) => doc.data());
+    return mappedBoard;
   }
 
   return (
@@ -121,7 +111,15 @@ function App() {
       >
         Add thread to firse
       </button>
-      <button onClick={() => getThreads()}> Get Threads</button>
+      <button
+        onClick={() => {
+          const threads = getThreads();
+          console.log(threads);
+        }}
+      >
+        {" "}
+        Get Threads
+      </button>
     </div>
   );
 }
