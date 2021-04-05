@@ -9,6 +9,7 @@ function Thread(props) {
         <div className="threadInfo">
           <div id="user">Anyonymous</div>
           <div>{props.title}</div>
+          {console.log(props.time)}
           <div>{props.time}</div>
           <div>No. {props.postNo}</div>
         </div>

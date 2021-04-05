@@ -88,12 +88,13 @@ function App() {
       <Header />
       <div className="Threads">
         {threadPosts.map((thread, index) => {
+          console.log(thread.created.toDate());
           return (
             <Thread
               index={index}
               postNo={thread.postNo}
               title={thread.title}
-              time={thread.time}
+              time={thread.created.toDate().toString()}
               text={thread.text}
             />
           );
