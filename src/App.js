@@ -6,15 +6,7 @@ import { firebase } from "@firebase/app";
 
 function App() {
   const [postNumeration, setPostNumeration] = useState(0);
-  const [threadPosts, setThreadPosts] = useState([
-    {
-      postNo: postNumeration,
-      title: "First post",
-      time: new Date(),
-      text: "Hello World",
-      posts: {},
-    },
-  ]);
+  const [threadPosts, setThreadPosts] = useState([]);
 
   // increases firestore count
   function incrPostNo() {
@@ -73,8 +65,23 @@ function App() {
   async function getThreads() {
     const board = await firebase.firestore().collection("board").get();
     const mappedBoard = board.docs.map((doc) => doc.data());
+    console.log(mappedBoard);
     return mappedBoard;
   }
+
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection("board")
+      .onSnapshot((serverUpdate) => {
+        const positions = serverUpdate.docs.map((_doc) => {
+          const data = _doc.data();
+          return data;
+        });
+        setThreadPosts(positions);
+        console.log(threadPosts);
+      });
+  }, []);
 
   return (
     <div className="App">
@@ -86,7 +93,7 @@ function App() {
               index={index}
               postNo={thread.postNo}
               title={thread.title}
-              time={thread.time.toString()}
+              time={thread.time}
               text={thread.text}
             />
           );
@@ -110,15 +117,6 @@ function App() {
         }
       >
         Add thread to firse
-      </button>
-      <button
-        onClick={() => {
-          const threads = getThreads();
-          console.log(threads);
-        }}
-      >
-        {" "}
-        Get Threads
       </button>
     </div>
   );
