@@ -5,7 +5,6 @@ import Header from "./components/Header";
 import { firebase } from "@firebase/app";
 
 function App() {
-  const [postNumeration, setPostNumeration] = useState(0);
   const [threadPosts, setThreadPosts] = useState([]);
 
   // increases firestore count
@@ -32,7 +31,6 @@ function App() {
   function getCurPostNo() {
     const db = firebase.firestore();
     const data = db.collection("meta").doc("data");
-
     const postNo = data.get().then((doc) => {
       if (doc.exists) {
         return doc.data().postNo;
@@ -65,21 +63,25 @@ function App() {
   async function getThreads() {
     const board = await firebase.firestore().collection("board").get();
     const mappedBoard = board.docs.map((doc) => doc.data());
-    console.log(mappedBoard);
+    // console.log(mappedBoard);
     return mappedBoard;
   }
 
+  // fetches the threads from firestore and saves them to treadPosts state
   useEffect(() => {
     firebase
       .firestore()
       .collection("board")
+      .orderBy("created", "desc")
       .onSnapshot((serverUpdate) => {
-        const positions = serverUpdate.docs.map((_doc) => {
-          const data = _doc.data();
+        const firebaseThreads = serverUpdate.docs.map((_doc) => {
+          // console.log(_doc.data());
+          let data = _doc.data();
+          data.id = _doc.id;
           return data;
         });
-        setThreadPosts(positions);
-        console.log(threadPosts);
+        setThreadPosts(firebaseThreads);
+        console.log("Threads", threadPosts);
       });
   }, []);
 
@@ -88,10 +90,10 @@ function App() {
       <Header />
       <div className="Threads">
         {threadPosts.map((thread, index) => {
-          console.log(thread.created.toDate());
           return (
             <Thread
-              index={index}
+              key={index}
+              id={thread.id}
               postNo={thread.postNo}
               title={thread.title}
               time={thread.created.toDate().toString()}
