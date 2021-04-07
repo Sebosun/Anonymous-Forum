@@ -75,13 +75,12 @@ function App() {
       .orderBy("created", "desc")
       .onSnapshot((serverUpdate) => {
         const firebaseThreads = serverUpdate.docs.map((_doc) => {
-          // console.log(_doc.data());
           let data = _doc.data();
           data.id = _doc.id;
           return data;
         });
         setThreadPosts(firebaseThreads);
-        console.log("Threads", threadPosts);
+        // console.log("Threads", threadPosts);
       });
   }, []);
 
@@ -96,8 +95,10 @@ function App() {
               id={thread.id}
               postNo={thread.postNo}
               title={thread.title}
-              time={thread.created.toDate().toString()}
+              time={thread.created}
               text={thread.text}
+              // getCurPostNo={getCurPostNo()}
+              // incrPostNo={incrPostNo()}
             />
           );
         })}
