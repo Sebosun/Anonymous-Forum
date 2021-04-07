@@ -8,7 +8,8 @@ function Post(props) {
         <div class="posterInfo">
           <div id="user">Anonymous</div>
           <div>{props.title}</div>
-          <div>{props.time}</div>
+          {props.time ? <div>{props.time.toDate().toString()}}</div> : null}
+          {/* <div>{props.time.toDate().toString()}</div> */}
           <div>No. {props.postNo}</div>
         </div>
         <div id="postText">{props.text}</div>

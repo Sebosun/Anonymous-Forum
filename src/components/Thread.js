@@ -42,7 +42,6 @@ function Thread(props) {
         created: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .then(props.incrPostNo());
-    await thread.add({});
   }
 
   return (
@@ -59,6 +58,19 @@ function Thread(props) {
         </div>
         <div id="postText">{props.text}</div>
       </div>
+
+      {postsCol.map((post, index) => {
+        return (
+          <Post
+            postNo={post.postNo}
+            title={post.title}
+            time={post.created}
+            text={post.text}
+            id={post.id}
+            key={index}
+          />
+        );
+      })}
       {/* <Post */}
       {/*   postNo={2} */}
       {/*   title={"Dupa"} */}
@@ -67,6 +79,7 @@ function Thread(props) {
       {/*     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." */}
       {/*   } */}
       {/* /> */}
+
       <button
         onClick={() => {
           addNewPost("First", "Second", "Third");

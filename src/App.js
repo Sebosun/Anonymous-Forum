@@ -97,8 +97,8 @@ function App() {
               title={thread.title}
               time={thread.created}
               text={thread.text}
-              // getCurPostNo={getCurPostNo()}
-              // incrPostNo={incrPostNo()}
+              getCurPostNo={getCurPostNo}
+              incrPostNo={incrPostNo}
             />
           );
         })}
