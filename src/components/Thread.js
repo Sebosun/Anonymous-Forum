@@ -6,26 +6,9 @@ import { firebase } from "@firebase/app";
 function Thread(props) {
   const [postsCol, setPostsCol] = useState([]);
 
-  //
-  function getPostsFromThread() {
-    const db = firebase.firestore();
-    const posts = db.collection("board").doc(props.id).collection("posts");
-    posts.onSnapshot((serverUpdate) => {
-      const firebasePosts = serverUpdate.docs.map((_doc) => {
-        let data = _doc.data();
-        data.id = _doc.id;
-        return data;
-      });
-      setPostsCol(firebasePosts);
-    });
-  }
+  // fetches the posts from firebase for a given thread
 
-  // onLoad get posts for a given Thread
-  useEffect(() => {
-    getPostsFromThread();
-    console.log("Posts", postsCol);
-  }, []);
-
+  // adds new post with name text and title
   async function addNewPost(name, text, title) {
     const db = firebase.firestore();
     const thread = db.collection("board").doc(props.id).collection("posts");
@@ -44,6 +27,30 @@ function Thread(props) {
       .then(props.incrPostNo());
   }
 
+  function getPostsFromThread() {
+    const db = firebase.firestore();
+    const posts = db
+      .collection("board")
+      .doc(props.id)
+      .collection("posts")
+      .orderBy("postNo", "asc");
+
+    posts.onSnapshot((serverUpdate) => {
+      const firebasePosts = serverUpdate.docs.map((_doc) => {
+        let data = _doc.data();
+        data.id = _doc.id;
+        return data;
+      });
+      setPostsCol(firebasePosts);
+    });
+  }
+
+  // onLoad get posts for a given Thread
+  useEffect(() => {
+    getPostsFromThread();
+    console.log("Posts", postsCol);
+  }, []);
+
   return (
     <div className="Thread">
       <div className="threadContainer">
@@ -54,7 +61,6 @@ function Thread(props) {
           {/* workaround for a bug with toDate.toString crashing the app when new thread is added */}
           {props.time ? <div>{props.time.toDate().toString()}}</div> : null}
           <div>No. {props.postNo}</div>
-          <button onClick={() => getPostsFromThread()}>Drip!</button>
         </div>
         <div id="postText">{props.text}</div>
       </div>
