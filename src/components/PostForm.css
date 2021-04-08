@@ -1,0 +1,13 @@
+.Form{
+  text-align: center;
+}
+
+.addForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label{
+  margin-right: 10px;
+}
