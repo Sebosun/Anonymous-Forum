@@ -3,6 +3,7 @@ import "./App.css";
 import Thread from "./components/Thread";
 import Header from "./components/Header";
 import { firebase } from "@firebase/app";
+import PostForm from "./components/PostForm.js";
 
 function App() {
   const [threadPosts, setThreadPosts] = useState([]);
@@ -86,6 +87,7 @@ function App() {
   // TODO check out why posts get replicated after adding new thread
   return (
     <div className="App">
+      <PostForm />
       <Header />
       <div className="Threads">
         {threadPosts.map((thread, index) => {
