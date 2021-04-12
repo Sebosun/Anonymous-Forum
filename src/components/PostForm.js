@@ -7,7 +7,13 @@ function PostForm(props) {
   const [title, setTitle] = useState("");
   return (
     <div className="Form">
-      <form className="addForm">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          props.addNewThread(name, text, title);
+        }}
+        className="addForm"
+      >
         <input
           placeholder="Name"
           value={name}

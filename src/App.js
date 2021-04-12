@@ -43,7 +43,7 @@ function App() {
     return postNo;
   }
 
-  async function addNewThread(thread) {
+  async function addNewThread(name, text, title) {
     const db = firebase.firestore();
     const board = db.collection("board");
     // since getCurPosNo returns a promise, we need first to wait before we add it to the board (async required to use await here)
@@ -51,10 +51,10 @@ function App() {
 
     board
       .add({
-        name: thread.name,
-        text: thread.text,
-        title: thread.title,
-        user: "Anyonymous",
+        user: name,
+        text: text,
+        title: title,
+        // user: "Anyonymous",
         postNo: postNo,
         created: firebase.firestore.FieldValue.serverTimestamp(),
       })
@@ -87,7 +87,7 @@ function App() {
   // TODO check out why posts get replicated after adding new thread
   return (
     <div className="App">
-      <PostForm />
+      <PostForm addNewThread={addNewThread} />
       <Header />
       <div className="Threads">
         {threadPosts.map((thread, index) => {
@@ -96,6 +96,7 @@ function App() {
               key={index}
               id={thread.id}
               postNo={thread.postNo}
+              user={thread.user}
               title={thread.title}
               time={thread.created}
               text={thread.text}

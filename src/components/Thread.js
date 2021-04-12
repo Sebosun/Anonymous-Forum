@@ -56,7 +56,7 @@ function Thread(props) {
       <div className="threadContainer">
         <div className="threadInfo">
           <div>{props.name}</div>
-          <div id="user">Anyonymous</div>
+          <div id="user">{props.user ? props.user : "Anyonymous"}</div>
           <div>{props.title}</div>
           {/* workaround for a bug with toDate.toString crashing the app when new thread is added */}
           {props.time ? <div>{props.time.toDate().toString()}}</div> : null}
