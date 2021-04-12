@@ -87,7 +87,7 @@ function App() {
   // TODO check out why posts get replicated after adding new thread
   return (
     <div className="App">
-      <PostForm addNewThread={addNewThread} />
+      <PostForm addNew={addNewThread} />
       <Header />
       <div className="Threads">
         {threadPosts.map((thread, index) => {

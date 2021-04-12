@@ -10,7 +10,7 @@ function PostForm(props) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          props.addNewThread(name, text, title);
+          props.addNew(name, text, title);
         }}
         className="addForm"
       >
