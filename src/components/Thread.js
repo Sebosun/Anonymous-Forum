@@ -6,7 +6,7 @@ import PostForm from "./PostForm";
 
 function Thread(props) {
   const [postsCol, setPostsCol] = useState([]);
-
+  const [replyVisible, setReplyVisible] = useState(false);
   // fetches the posts from firebase for a given thread
 
   // adds new post with name text and title
@@ -55,6 +55,19 @@ function Thread(props) {
   return (
     <div className="Thread">
       <div className="threadContainer">
+        {replyVisible ? (
+          <PostForm addNew={addNewPost} />
+        ) : (
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setReplyVisible(!replyVisible);
+            }}
+            style={{ width: "200px" }}
+          >
+            Reply to thread
+          </button>
+        )}
         <div className="threadInfo">
           <div>{props.name}</div>
           <div id="user">{props.user ? props.user : "Anyonymous"}</div>
@@ -78,8 +91,6 @@ function Thread(props) {
           />
         );
       })}
-
-      <PostForm addNew={addNewPost} />
       <button
         onClick={() => {
           addNewPost("First", "Second", "Third");

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./PostForm.css";
 
 function PostForm(props) {
+  // TODO text verification, atm you can post infinite amount of text and it looks shit, not to mention spammy
   const [name, setName] = useState("");
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
@@ -15,7 +16,7 @@ function PostForm(props) {
         className="addForm"
       >
         <input
-          placeholder="Name"
+          placeholder="name"
           value={name}
           type="text"
           onChange={(e) => {
@@ -23,15 +24,15 @@ function PostForm(props) {
           }}
         />
         <input
-          placeholder="Title"
+          placeholder="title"
           value={title}
           type="text"
           onChange={(e) => {
             setTitle(e.target.value);
           }}
         />
-        <input
-          placeholder="Comment"
+        <textarea
+          placeholder="comment"
           value={text}
           type="text"
           onChange={(e) => {
