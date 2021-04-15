@@ -43,24 +43,6 @@ function App() {
     return postNo;
   }
 
-  async function addNewThread(name, text, title) {
-    const db = firebase.firestore();
-    const board = db.collection("board");
-    // since getCurPosNo returns a promise, we need first to wait before we add it to the board (async required to use await here)
-    const postNo = await getCurPostNo();
-
-    board
-      .add({
-        user: name,
-        text: text,
-        title: title,
-        // user: "Anyonymous",
-        postNo: postNo,
-        created: firebase.firestore.FieldValue.serverTimestamp(),
-      })
-      .then(incrPostNo());
-  }
-
   async function getThreads() {
     const board = await firebase.firestore().collection("board").get();
     const mappedBoard = board.docs.map((doc) => doc.data());
@@ -87,7 +69,7 @@ function App() {
   // TODO check out why posts get replicated after adding new thread
   return (
     <div className="App">
-      <PostForm addNew={addNewThread} />
+      <PostForm getNo={getCurPostNo} incrNo={incrPostNo} />
       <Header />
       <div className="Threads">
         {threadPosts.map((thread, index) => {
@@ -114,17 +96,6 @@ function App() {
         Print post no
       </button>
       <button onClick={() => incrPostNo()}>Firestore add!</button>
-      <button
-        onClick={() =>
-          addNewThread({
-            name: "First",
-            text: "Hello world",
-            title: "Title!",
-          })
-        }
-      >
-        Add thread to firse
-      </button>
     </div>
   );
 }
