@@ -7,25 +7,6 @@ import PostForm from "./PostForm";
 function Thread(props) {
   const [postsCol, setPostsCol] = useState([]);
   const [replyVisible, setReplyVisible] = useState(false);
-  // fetches the posts from firebase for a given thread
-
-  // adds new post with name text and title
-  // async function addNewPost(name, text, title) {
-  //   const db = firebase.firestore();
-  //   const thread = db.collection("board").doc(props.id).collection("posts");
-  //   const postNo = await props.getCurPostNo();
-
-  //   thread
-  //     .add({
-  //       name: name,
-  //       text: text,
-  //       title: title,
-  //       user: "Anyonymous",
-  //       postNo: postNo,
-  //       created: firebase.firestore.FieldValue.serverTimestamp(),
-  //     })
-  //     .then(props.incrPostNo());
-  // }
 
   function getPostsFromThread() {
     const db = firebase.firestore();
@@ -67,7 +48,9 @@ function Thread(props) {
             Reply to thread
           </button>
         )}
+
         <div className="threadInfo">
+          <img src={props.image} style={{ width: "20vh" }} />
           <div>{props.name}</div>
           <div id="user">{props.user ? props.user : "Anyonymous"}</div>
           <div>{props.title}</div>

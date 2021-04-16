@@ -69,7 +69,10 @@ function PostForm(props) {
           created: firebase.firestore.FieldValue.serverTimestamp(),
           image: imageName,
         })
-        .then(incrNo());
+        .then(incrNo())
+        .catch((error) => {
+          console.log(error);
+        });
     }
   }
 

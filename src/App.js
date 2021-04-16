@@ -49,6 +49,7 @@ function App() {
               title={thread.title}
               time={thread.created}
               text={thread.text}
+              image={thread.image}
             />
           );
         })}
