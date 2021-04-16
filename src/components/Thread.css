@@ -17,6 +17,10 @@
   align-self: stretch;
 }
 
+.image{
+  width: 30vh;
+}
+
 .threadInfo{
   display: flex;
   gap: 10px;

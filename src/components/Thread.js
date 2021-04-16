@@ -50,15 +50,21 @@ function Thread(props) {
         )}
 
         <div className="threadInfo">
-          <img src={props.image} style={{ width: "30vh" }} />
-          <div>{props.name}</div>
-          <div id="user">{props.user ? props.user : "Anyonymous"}</div>
-          <div>{props.title}</div>
+          <img className="image" src={props.image} />
+          <div className="name">{props.name}</div>
+          <div className="user" id="user">
+            {props.user ? props.user : "Anyonymous"}
+          </div>
+          <div className="title">{props.title}</div>
           {/* workaround for a bug with toDate.toString crashing the app when new thread is added */}
-          {props.time ? <div>{props.time.toDate().toString()}}</div> : null}
-          <div>No. {props.postNo}</div>
+          {props.time ? (
+            <div className="time">{props.time.toDate().toString()}}</div>
+          ) : null}
+          <div className="postNo">No. {props.postNo}</div>
         </div>
-        <div id="postText">{props.text}</div>
+        <div className="postText" id="postText">
+          {props.text}
+        </div>
       </div>
 
       {postsCol.map((post, index) => {
