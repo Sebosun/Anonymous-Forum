@@ -9,39 +9,6 @@ function App() {
   const [threadPosts, setThreadPosts] = useState([]);
 
   // increases firestore count
-  function incrPostNo() {
-    const db = firebase.firestore();
-    const increment = firebase.firestore.FieldValue.increment(1);
-    const postNoRef = db.collection("meta").doc("data");
-    postNoRef.update({ postNo: increment });
-  }
-
-  // test for getting stuff from thread posts, will setup collections within threads themselves
-  // function getCurPostNo(){
-  //     const db = firebase.firestore();
-  //     db.collection("test").onSnapshot((serverUpdate) => {
-  //         const mainPosts = serverUpdate.docs.map((_doc) =>{
-  //             const data = _doc.data();
-  //             console.log(data);
-  //         }
-  //         )
-  //     })
-  // }
-
-  //gets the postNo from the meta collection
-  function getCurPostNo() {
-    const db = firebase.firestore();
-    const data = db.collection("meta").doc("data");
-    const postNo = data.get().then((doc) => {
-      if (doc.exists) {
-        return doc.data().postNo;
-      } else {
-        return 0;
-      }
-    });
-
-    return postNo;
-  }
 
   async function getThreads() {
     const board = await firebase.firestore().collection("board").get();
@@ -69,7 +36,7 @@ function App() {
   // TODO check out why posts get replicated after adding new thread
   return (
     <div className="App">
-      <PostForm getNo={getCurPostNo} incrNo={incrPostNo} />
+      <PostForm thread={true} />
       <Header />
       <div className="Threads">
         {threadPosts.map((thread, index) => {
@@ -82,20 +49,10 @@ function App() {
               title={thread.title}
               time={thread.created}
               text={thread.text}
-              getCurPostNo={getCurPostNo}
-              incrPostNo={incrPostNo}
             />
           );
         })}
       </div>
-      <button
-        onClick={() => {
-          getCurPostNo().then((resolve) => console.log(resolve));
-        }}
-      >
-        Print post no
-      </button>
-      <button onClick={() => incrPostNo()}>Firestore add!</button>
     </div>
   );
 }

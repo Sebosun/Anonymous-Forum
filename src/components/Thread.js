@@ -10,23 +10,22 @@ function Thread(props) {
   // fetches the posts from firebase for a given thread
 
   // adds new post with name text and title
-  async function addNewPost(name, text, title) {
-    const db = firebase.firestore();
-    const thread = db.collection("board").doc(props.id).collection("posts");
+  // async function addNewPost(name, text, title) {
+  //   const db = firebase.firestore();
+  //   const thread = db.collection("board").doc(props.id).collection("posts");
+  //   const postNo = await props.getCurPostNo();
 
-    const postNo = await props.getCurPostNo();
-
-    thread
-      .add({
-        name: name,
-        text: text,
-        title: title,
-        user: "Anyonymous",
-        postNo: postNo,
-        created: firebase.firestore.FieldValue.serverTimestamp(),
-      })
-      .then(props.incrPostNo());
-  }
+  //   thread
+  //     .add({
+  //       name: name,
+  //       text: text,
+  //       title: title,
+  //       user: "Anyonymous",
+  //       postNo: postNo,
+  //       created: firebase.firestore.FieldValue.serverTimestamp(),
+  //     })
+  //     .then(props.incrPostNo());
+  // }
 
   function getPostsFromThread() {
     const db = firebase.firestore();
@@ -56,7 +55,7 @@ function Thread(props) {
     <div className="Thread">
       <div className="threadContainer">
         {replyVisible ? (
-          <PostForm addNew={addNewPost} />
+          <PostForm thread={false} id={props.id} />
         ) : (
           <button
             onClick={(e) => {
@@ -91,13 +90,6 @@ function Thread(props) {
           />
         );
       })}
-      <button
-        onClick={() => {
-          addNewPost("First", "Second", "Third");
-        }}
-      >
-        Add poast
-      </button>
     </div>
   );
 }
