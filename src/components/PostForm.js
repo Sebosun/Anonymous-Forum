@@ -10,7 +10,7 @@ function PostForm(props) {
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
   const [image, setImage] = useState(null);
-  const [fileUrl, setFileUrl] = useState(null);
+  const [fileUrl, setFileUrl] = useState("");
 
   async function addNewThread(name, text, title, imageName) {
     const db = firebase.firestore();
@@ -35,23 +35,32 @@ function PostForm(props) {
     setImage(e.target.files[0]);
   };
 
-  const onImageSubmit = async () => {
-    if (image != null) {
-      const file = image;
-      const storageRef = firebase.storage().ref();
-      const fileRef = storageRef.child(file.name);
-      await fileRef.put(file);
-      setFileUrl(await fileRef.getDownloadURL());
-    } else setFileUrl("");
+  const onPostSubmit = async (e) => {
+    e.preventDefault();
+    const file = image;
+    const storageRef = firebase.storage().ref();
+    const fileRef = storageRef.child(file.name);
+
+    await fileRef.put(file);
+    fileRef.getDownloadURL().then((url) => {
+      addNewThread(name, text, title, url);
+    });
+    //   .getDownloadUrl()
+    //   .then((url) => {
+    //     setFileUrl(url);
+    //     console.log(url);
+    //     console.log(fileUrl);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   return (
     <div className="Form">
       <form
-        onSubmit={async (e) => {
-          e.preventDefault();
-          await onImageSubmit();
-          addNewThread(name, text, title, "dpa");
+        onSubmit={(e) => {
+          onPostSubmit(e);
         }}
         className="addForm"
       >
