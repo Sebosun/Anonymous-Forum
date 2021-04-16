@@ -50,7 +50,7 @@ function Thread(props) {
         )}
 
         <div className="threadInfo">
-          <img src={props.image} style={{ width: "20vh" }} />
+          <img src={props.image} style={{ width: "30vh" }} />
           <div>{props.name}</div>
           <div id="user">{props.user ? props.user : "Anyonymous"}</div>
           <div>{props.title}</div>
@@ -70,6 +70,7 @@ function Thread(props) {
             text={post.text}
             id={post.id}
             key={index}
+            image={post.image}
           />
         );
       })}

@@ -6,6 +6,7 @@ function Post(props) {
     <div className="Post">
       <div className="postContainer">
         <div class="posterInfo">
+          <img src={props.image} style={{ width: "30vh" }} />
           <div id="user">Anonymous</div>
           <div>{props.title}</div>
           {props.time ? <div>{props.time.toDate().toString()}}</div> : null}
