@@ -37,23 +37,17 @@ function PostForm(props) {
 
   const onPostSubmit = async (e) => {
     e.preventDefault();
-    const file = image;
-    const storageRef = firebase.storage().ref();
-    const fileRef = storageRef.child(file.name);
-
-    await fileRef.put(file);
-    fileRef.getDownloadURL().then((url) => {
-      addNewThread(name, text, title, url);
-    });
-    //   .getDownloadUrl()
-    //   .then((url) => {
-    //     setFileUrl(url);
-    //     console.log(url);
-    //     console.log(fileUrl);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    if (image === null) {
+      addNewThread(name, text, title, "");
+    } else {
+      const file = image;
+      const storageRef = firebase.storage().ref();
+      const fileRef = storageRef.child(file.name);
+      await fileRef.put(file);
+      fileRef.getDownloadURL().then((url) => {
+        addNewThread(name, text, title, url);
+      });
+    }
   };
 
   return (
