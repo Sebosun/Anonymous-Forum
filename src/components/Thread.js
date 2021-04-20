@@ -34,7 +34,7 @@ function Thread(props) {
 
   return (
     <div className="Thread">
-      <div className="threadContainer">
+      <div className="threadReplyContainer">
         {replyVisible ? (
           <PostForm thread={false} id={props.id} />
         ) : (
@@ -49,21 +49,23 @@ function Thread(props) {
           </button>
         )}
 
+        {/* split this into two, image is one part of the post, and the content second */}
         <div className="threadInfo">
           <img className="image" src={props.image} />
-          <div className="name">{props.name}</div>
-          <div className="user" id="user">
-            {props.user ? props.user : "Anyonymous"}
+          <div className="threadContainer">
+            <div className="user" id="user">
+              {props.user ? props.user : "Anyonymous"}
+            </div>
+            <div className="title">{props.title ? props.title : "Thread"}</div>
+            {/* workaround for a bug with toDate.toString crashing the app when new thread is added */}
+            {props.time ? (
+              <div className="time">{props.time.toDate().toString()}}</div>
+            ) : null}
+            <div className="postNo">No. {props.postNo}</div>
           </div>
-          <div className="title">{props.title}</div>
-          {/* workaround for a bug with toDate.toString crashing the app when new thread is added */}
-          {props.time ? (
-            <div className="time">{props.time.toDate().toString()}}</div>
-          ) : null}
-          <div className="postNo">No. {props.postNo}</div>
-        </div>
-        <div className="postText" id="postText">
-          {props.text}
+          <div className="postText" id="postText">
+            {props.text}
+          </div>
         </div>
       </div>
 

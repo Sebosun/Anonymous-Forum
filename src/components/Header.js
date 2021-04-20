@@ -4,8 +4,8 @@ import "./Header.css";
 function Header(props) {
   return (
     <div className="header">
-      <h1>Sebos Chan</h1>
-      <p>A safe space for your naruto roleplay</p>
+      <h1>{props.chan}</h1>
+      <p>{props.desc}</p>
     </div>
   );
 }

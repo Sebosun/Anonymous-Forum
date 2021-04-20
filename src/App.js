@@ -37,7 +37,7 @@ function App() {
   return (
     <div className="App">
       <PostForm thread={true} />
-      <Header />
+      <Header chan="Beschan" desc="A safe space for your catboy fantasies" />
       <div className="Threads">
         {threadPosts.map((thread, index) => {
           return (
