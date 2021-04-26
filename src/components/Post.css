@@ -1,28 +1,31 @@
 .Post{
   margin-top: 1rem;
   background-color: #757474;
-  display: block;
-  width: fit-content;
-  min-width: 200px;
-  max-width: 100%;
-  font-size: 100%;
+  padding: 10px;
+  margin: 10px;
+  grid-template-rows: auto 1fr;
+  grid-gap: 10px;
+  font-size: 0.7rem;
+  display: grid;
+}
+
+.postImage{
+ float: left;
+ width: 20%;
+ height: auto;
+ margin-right: 10px;
 }
 
 .postContainer{
-  padding: 10px;
-  margin: 10px;
-  display: grid;
-  grid-template-rows: auto 5fr;
-  grid-gap: 10px;
-  text-align: left;
-  font-size: 0.7rem;
-  align-self: stretch;
+
 }
 
 .posterInfo{
   display: flex;
   gap: 10px;
+  margin-left: 20px;
 }
+
 
 #postText{
   padding-left: 10px;

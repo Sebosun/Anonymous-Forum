@@ -51,6 +51,7 @@ function Thread(props) {
 
         {/* split this into two, image is one part of the post, and the content second */}
         <div className="threadInfo">
+          {/* TODO: onClick event on image changing it to 100% and back */}
           <img className="image" src={props.image} />
           <div className="threadContainer">
             <div className="user" id="user">

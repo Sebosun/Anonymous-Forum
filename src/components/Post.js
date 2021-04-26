@@ -5,10 +5,10 @@ function Post(props) {
   return (
     <div className="Post">
       <div className="postContainer">
+        {props.image === "" ? null : (
+          <img className="postImage" src={props.image} />
+        )}
         <div class="posterInfo">
-          {props.image === "" ? null : (
-            <img src={props.image} style={{ width: "30vh" }} />
-          )}
           <div id="user">Anonymous</div>
           <div>{props.title}</div>
           {props.time ? <div>{props.time.toDate().toString()}}</div> : null}
