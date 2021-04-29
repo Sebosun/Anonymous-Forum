@@ -36,19 +36,7 @@ function Thread(props) {
   return (
     <div className="Thread">
       <div className="threadReplyContainer">
-        {replyVisible ? (
-          <PostForm thread={false} id={props.id} />
-        ) : (
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              setReplyVisible(!replyVisible);
-            }}
-            style={{ width: "200px" }}
-          >
-            Reply to thread
-          </button>
-        )}
+        {replyVisible ? <PostForm thread={false} id={props.id} /> : null}
 
         {/* split this into two, image is one part of the post, and the content second */}
         <div className="threadInfo">
@@ -67,7 +55,12 @@ function Thread(props) {
                   props.time.toDate().toLocaleTimeString()}
               </div>
             ) : null}
-            <div className="postNo">No. {props.postNo}</div>
+            <div
+              className="postNo"
+              onClick={() => setReplyVisible(!replyVisible)}
+            >
+              No. {props.postNo}
+            </div>
           </div>
           <div className="postText" id="postText">
             {props.text}
