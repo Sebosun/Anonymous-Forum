@@ -5,6 +5,7 @@ import { firebase } from "@firebase/app";
 import PostForm from "./PostForm";
 
 function Thread(props) {
+  // TODO expand image on click
   const [postsCol, setPostsCol] = useState([]);
   const [replyVisible, setReplyVisible] = useState(false);
 
@@ -60,7 +61,11 @@ function Thread(props) {
             <div className="title">{props.title ? props.title : "Thread"}</div>
             {/* workaround for a bug with toDate.toString crashing the app when new thread is added */}
             {props.time ? (
-              <div className="time">{props.time.toDate().toString()}}</div>
+              <div className="time">
+                {props.time.toDate().toDateString() +
+                  " " +
+                  props.time.toDate().toLocaleTimeString()}
+              </div>
             ) : null}
             <div className="postNo">No. {props.postNo}</div>
           </div>

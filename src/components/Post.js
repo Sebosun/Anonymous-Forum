@@ -11,7 +11,13 @@ function Post(props) {
         <div class="posterInfo">
           <div id="user">Anonymous</div>
           <div>{props.title}</div>
-          {props.time ? <div>{props.time.toDate().toString()}}</div> : null}
+          {props.time ? (
+            <div>
+              {props.time.toDate().toDateString() +
+                " " +
+                props.time.toDate().toLocaleTimeString()}
+            </div>
+          ) : null}
           {/* <div>{props.time.toDate().toString()}</div> */}
           <div>No. {props.postNo}</div>
         </div>

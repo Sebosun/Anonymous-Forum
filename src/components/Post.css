@@ -11,8 +11,8 @@
 
 .postImage{
  float: left;
- width: 20%;
  height: auto;
+ width: 20%;
  margin-right: 10px;
 }
 
@@ -23,7 +23,7 @@
 .posterInfo{
   display: flex;
   gap: 10px;
-  margin-left: 20px;
+  padding-bottom: 10px;
 }
 
 
