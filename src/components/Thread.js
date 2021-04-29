@@ -27,6 +27,10 @@ function Thread(props) {
     });
   }
 
+  function clickReply() {
+    setReplyVisible(!replyVisible);
+  }
+
   // onLoad get posts for a given Thread
   useEffect(() => {
     getPostsFromThread();
@@ -55,10 +59,7 @@ function Thread(props) {
                   props.time.toDate().toLocaleTimeString()}
               </div>
             ) : null}
-            <div
-              className="postNo"
-              onClick={() => setReplyVisible(!replyVisible)}
-            >
+            <div className="postNo" onClick={() => clickReply()}>
               No. {props.postNo}
             </div>
           </div>
@@ -78,6 +79,7 @@ function Thread(props) {
             id={post.id}
             key={index}
             image={post.image}
+            clickReply={clickReply}
           />
         );
       })}
