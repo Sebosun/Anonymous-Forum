@@ -12,7 +12,6 @@
 .postImage{
  float: left;
  height: auto;
- width: 20%;
  margin-right: 10px;
 }
 
@@ -21,7 +20,8 @@
 }
 
 .posterInfo{
-  display: flex;
+  display: inline-flex;
+  /* display: flex; */
   gap: 10px;
   padding-bottom: 10px;
 }

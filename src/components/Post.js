@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Post.css";
 
 function Post(props) {
+  const [imgSize, setImgSize] = useState({
+    height: "15vh",
+  });
+
+  function handleImageSize() {
+    if (imgSize.height === "15vh") {
+      setImgSize({
+        height: "50vh",
+      });
+    } else {
+      setImgSize({
+        height: "15vh",
+      });
+    }
+  }
+
   return (
     <div className="Post">
       <div className="postContainer">
         {props.image === "" ? null : (
-          <img className="postImage" src={props.image} />
+          <img
+            className="postImage"
+            src={props.image}
+            style={imgSize}
+            onClick={() => {
+              handleImageSize();
+            }}
+          />
         )}
         <div class="posterInfo">
           <div id="user">Anonymous</div>
