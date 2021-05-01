@@ -7,6 +7,7 @@ import PostForm from "./components/PostForm.js";
 
 function App() {
   const [threadPosts, setThreadPosts] = useState([]);
+  const [addThread, setAddThread] = useState(false);
 
   // increases firestore count
 
@@ -36,8 +37,15 @@ function App() {
   // TODO check out why posts get replicated after adding new thread
   return (
     <div className="App">
-      <PostForm thread={true} />
       <Header chan="Beschan" desc="A safe space for your catboy fantasies" />
+      {!addThread ? (
+        <button onClick={() => setAddThread(!addThread)}>Add a thread!</button>
+      ) : (
+        <div>
+          <PostForm thread={true} />
+          <button onClick={() => setAddThread(!addThread)}>Close</button>
+        </div>
+      )}
       <div className="Threads">
         {threadPosts.map((thread, index) => {
           return (
@@ -54,6 +62,14 @@ function App() {
           );
         })}
       </div>
+      {!addThread ? (
+        <button onClick={() => setAddThread(!addThread)}>Add a thread!</button>
+      ) : (
+        <div>
+          <PostForm thread={true} />
+          <button onClick={() => setAddThread(!addThread)}>Close</button>
+        </div>
+      )}
     </div>
   );
 }
