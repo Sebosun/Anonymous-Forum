@@ -18,7 +18,6 @@ function App() {
     return mappedBoard;
   }
 
-  // fetches the threads from firestore and saves them to treadPosts state
   useEffect(() => {
     firebase
       .firestore()
@@ -34,7 +33,6 @@ function App() {
         // console.log("Threads", threadPosts);
       });
   }, []);
-  // TODO check out why posts get replicated after adding new thread
   return (
     <div className="App">
       <Header chan="Beschan" desc="A safe space for your catboy fantasies" />

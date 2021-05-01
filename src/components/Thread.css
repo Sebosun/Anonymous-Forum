@@ -18,7 +18,7 @@
 }
 
 .image{
-  height: 15vh;
+  height: 15vw;
   float: left;
   margin-right: 10px;
 }
@@ -29,8 +29,10 @@
 }
 
 .threadContainer{
-  display: flex;
-  align-items: flex-start;
+  /* display: flex; */
+  /* flex-flow: row wrap; */
+  /* align-items: flex-start; */
+  display: inline-flex;
   gap: 10px;
   padding-bottom: 10px;
 }

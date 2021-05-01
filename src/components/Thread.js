@@ -9,7 +9,21 @@ function Thread(props) {
   // TODO clicking postNo should open up form and fill it automatically with >>7
   const [postsCol, setPostsCol] = useState([]);
   const [replyVisible, setReplyVisible] = useState(false);
+  const [imgSize, setImgSize] = useState({
+    height: "15vh",
+  });
 
+  function handleImageSize() {
+    if (imgSize.height === "15vh") {
+      setImgSize({
+        height: "50vh",
+      });
+    } else {
+      setImgSize({
+        height: "15vh",
+      });
+    }
+  }
   function getPostsFromThread() {
     const db = firebase.firestore();
     const posts = db
@@ -45,8 +59,15 @@ function Thread(props) {
 
         {/* split this into two, image is one part of the post, and the content second */}
         <div className="threadInfo">
-          {/* TODO: onClick event on image changing it to 100% and back */}
-          <img className="image" src={props.image} />
+          {/*<img className="image" src={props.image} /> */}
+          <img
+            onClick={() => {
+              handleImageSize();
+            }}
+            style={imgSize}
+            className="image"
+            src={props.image}
+          />
           <div className="threadContainer">
             <div className="user" id="user">
               {props.user ? props.user : "Anyonymous"}
