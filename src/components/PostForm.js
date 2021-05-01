@@ -141,9 +141,14 @@ function PostForm(props) {
           onChange={(e) => {
             setText(e.target.value);
           }}
+          required
         />
 
-        <input type="file" onChange={onFileChange} />
+        {props.thread ? (
+          <input type="file" onChange={onFileChange} required />
+        ) : (
+          <input type="file" onChange={onFileChange} />
+        )}
         <button>Submit</button>
       </form>
     </div>
