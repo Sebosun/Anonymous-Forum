@@ -19,7 +19,10 @@ function Post(props) {
             </div>
           ) : null}
           {/* <div>{props.time.toDate().toString()}</div> */}
-          <div className="postNo" onClick={() => props.clickReply()}>
+          <div
+            className="postNo"
+            onClick={() => props.clickReply(props.postNo)}
+          >
             No. {props.postNo}
           </div>
         </div>

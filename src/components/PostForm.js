@@ -34,11 +34,19 @@ function PostForm(props) {
     return postNo;
   }
 
+  function resetToDefault() {
+    setName("");
+    setText("");
+    setTitle("");
+    setImage(null);
+  }
+  // adds new thread to the firebase
+  // based on if its a thread reply or a new tread altogether
+  // if new thread, else post reply
   async function addNewThread(name, text, title, imageName) {
     const db = firebase.firestore();
     const postNo = await getNo();
     console.log(props.thread);
-    // based if its a thread or board choose appropriate collection
     if (props.thread === true) {
       const collection = db.collection("board");
 
@@ -52,7 +60,10 @@ function PostForm(props) {
           created: firebase.firestore.FieldValue.serverTimestamp(),
           image: imageName,
         })
-        .then(incrNo());
+        .then(() => {
+          incrNo();
+          resetToDefault();
+        });
     } else {
       const collection = db
         .collection("board")
@@ -69,7 +80,10 @@ function PostForm(props) {
           created: firebase.firestore.FieldValue.serverTimestamp(),
           image: imageName,
         })
-        .then(incrNo())
+        .then(() => {
+          resetToDefault();
+          incrNo();
+        })
         .catch((error) => {
           console.log(error);
         });

@@ -6,6 +6,7 @@ import PostForm from "./PostForm";
 
 function Thread(props) {
   // TODO expand image on click
+  // TODO clicking postNo should open up form and fill it automatically with >>7
   const [postsCol, setPostsCol] = useState([]);
   const [replyVisible, setReplyVisible] = useState(false);
 
@@ -27,7 +28,7 @@ function Thread(props) {
     });
   }
 
-  function clickReply() {
+  function clickReply(postNo) {
     setReplyVisible(!replyVisible);
   }
 
