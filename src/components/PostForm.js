@@ -61,8 +61,8 @@ function PostForm(props) {
           image: imageName,
         })
         .then(() => {
-          incrNo();
           resetToDefault();
+          incrNo().then(props.openCloseForm());
         });
     } else {
       const collection = db
@@ -82,7 +82,8 @@ function PostForm(props) {
         })
         .then(() => {
           resetToDefault();
-          incrNo();
+          incrNo().then(props.openCloseForm());
+          // props.openCloseForm();
         })
         .catch((error) => {
           console.log(error);

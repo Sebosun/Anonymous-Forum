@@ -7,7 +7,7 @@ import PostForm from "./components/PostForm.js";
 
 function App() {
   const [threadPosts, setThreadPosts] = useState([]);
-  const [addThread, setAddThread] = useState(false);
+  const [showPostForm, setShowPostForm] = useState(false);
 
   // increases firestore count
 
@@ -33,15 +33,22 @@ function App() {
         // console.log("Threads", threadPosts);
       });
   }, []);
+
+  function openCloseForm() {
+    setShowPostForm(!showPostForm);
+  }
+
   return (
     <div className="App">
       <Header chan="Beschan" desc="A safe space for your catboy fantasies" />
-      {!addThread ? (
-        <button onClick={() => setAddThread(!addThread)}>Add a thread!</button>
+      {!showPostForm ? (
+        <button onClick={() => setShowPostForm(!showPostForm)}>
+          Add a thread!
+        </button>
       ) : (
         <div>
-          <PostForm thread={true} />
-          <button onClick={() => setAddThread(!addThread)}>Close</button>
+          <PostForm openCloseForm={openCloseForm} thread={true} />
+          <button onClick={() => setShowPostForm(!showPostForm)}>Close</button>
         </div>
       )}
       <div className="Threads">
@@ -60,12 +67,12 @@ function App() {
           );
         })}
       </div>
-      {!addThread ? (
-        <button onClick={() => setAddThread(!addThread)}>Add a thread!</button>
+      {!showPostForm ? (
+        <button onClick={() => openCloseForm()}>Add a thread!</button>
       ) : (
         <div>
-          <PostForm thread={true} />
-          <button onClick={() => setAddThread(!addThread)}>Close</button>
+          <PostForm openCloseForm={openCloseForm} thread={true} />
+          <button onClick={() => openCloseForm()}>Close</button>
         </div>
       )}
     </div>

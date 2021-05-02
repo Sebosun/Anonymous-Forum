@@ -42,7 +42,7 @@ function Thread(props) {
     });
   }
 
-  function clickReply(postNo) {
+  function clickReply() {
     setReplyVisible(!replyVisible);
   }
 
@@ -55,7 +55,9 @@ function Thread(props) {
   return (
     <div className="Thread">
       <div className="threadReplyContainer">
-        {replyVisible ? <PostForm thread={false} id={props.id} /> : null}
+        {replyVisible ? (
+          <PostForm thread={false} openCloseForm={clickReply} id={props.id} />
+        ) : null}
 
         {/* split this into two, image is one part of the post, and the content second */}
         <div className="threadInfo">
