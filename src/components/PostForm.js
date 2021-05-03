@@ -129,6 +129,7 @@ function PostForm(props) {
           onChange={(e) => {
             setName(e.target.value);
           }}
+          className="postName"
         />
         <input
           placeholder="title"
@@ -137,6 +138,7 @@ function PostForm(props) {
           onChange={(e) => {
             setTitle(e.target.value);
           }}
+          className="postTitle"
         />
         <textarea
           placeholder="comment"
@@ -146,14 +148,20 @@ function PostForm(props) {
             setText(e.target.value);
           }}
           required
+          className="postText"
         />
 
         {props.thread ? (
-          <input type="file" onChange={onFileChange} required />
+          <input
+            className="postFile"
+            type="file"
+            onChange={onFileChange}
+            required
+          />
         ) : (
-          <input type="file" onChange={onFileChange} />
+          <input className="postFile" type="file" onChange={onFileChange} />
         )}
-        <button>Submit</button>
+        <button className="postSubmit">Submit</button>
       </form>
     </div>
   );

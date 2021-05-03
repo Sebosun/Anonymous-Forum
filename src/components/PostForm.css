@@ -1,11 +1,21 @@
 .Form{
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .addForm{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 400px;
+  height: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr 1fr;
+}
+
+.postText{
+  grid-column-start: span 2;
+}
+.postButton{
 }
 
 label{
