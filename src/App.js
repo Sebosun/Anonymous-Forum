@@ -42,9 +42,11 @@ function App() {
     <div className="App">
       <Header chan="Beschan" desc="A safe space for your catboy fantasies" />
       {!showPostForm ? (
-        <button onClick={() => setShowPostForm(!showPostForm)}>
-          Add a thread!
-        </button>
+        <div className="showButton">
+          <button className="showButton" onClick={() => openCloseForm()}>
+            Add a thread!
+          </button>
+        </div>
       ) : (
         <div>
           <PostForm openCloseForm={openCloseForm} thread={true} />
@@ -68,7 +70,11 @@ function App() {
         })}
       </div>
       {!showPostForm ? (
-        <button onClick={() => openCloseForm()}>Add a thread!</button>
+        <div className="showButton">
+          <button className="showButton" onClick={() => openCloseForm()}>
+            Add a thread!
+          </button>
+        </div>
       ) : (
         <div>
           <PostForm openCloseForm={openCloseForm} thread={true} />
