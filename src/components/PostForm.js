@@ -12,7 +12,7 @@ function PostForm(props) {
   const [image, setImage] = useState(null);
 
   // increases the psot number in meta collection
-  function incrNo() {
+  async function incrNo() {
     const db = firebase.firestore();
     const increment = firebase.firestore.FieldValue.increment(1);
     const postNoRef = db.collection("meta").doc("data");
@@ -62,7 +62,9 @@ function PostForm(props) {
         })
         .then(() => {
           resetToDefault();
-          incrNo().then(props.openCloseForm());
+          incrNo().then(() => {
+            window.location.reload(false);
+          });
         });
     } else {
       const collection = db
@@ -82,8 +84,9 @@ function PostForm(props) {
         })
         .then(() => {
           resetToDefault();
-          incrNo().then(props.openCloseForm());
-          // props.openCloseForm();
+          incrNo().then(() => {
+            window.location.reload(false);
+          });
         })
         .catch((error) => {
           console.log(error);
