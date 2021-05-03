@@ -16,9 +16,6 @@ body{
   justify-content: center;
 }
 
-.App{
-}
-
 .Threads{
   width: 100%;
 }
@@ -27,4 +24,11 @@ body{
   top: 0;
   width: 100%;
   text-align: center;
+}
+
+button{
+  background-color: transparent;
+  color: beige;
+  border: 1px solid beige;
+
 }
