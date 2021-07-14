@@ -1,8 +1,12 @@
+.Thread:last-child{
+  border-bottom: none;
+}
 .Thread{
   padding: 10px;
   background-color: #1c1c1c;
   border-bottom: 2px solid gray;
 }
+
 
 .threadReplyContainer{
   padding: 10px;
@@ -29,9 +33,6 @@
 }
 
 .threadContainer{
-  /* display: flex; */
-  /* flex-flow: row wrap; */
-  /* align-items: flex-start; */
   display: inline-flex;
   gap: 10px;
   padding-bottom: 10px;

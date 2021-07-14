@@ -57,7 +57,6 @@ function App() {
           );
         })}
       </div>
-      <ShowPostForm thread={true} />
     </div>
   );
 }
