@@ -55,7 +55,7 @@ function Thread(props) {
 
   return (
     <div className="Thread">
-      <div className="threadReplyContainer">
+      <div className="threadContainer">
         {replyVisible ? (
           <ShowPostForm hidden={true} thread={false} id={props.id} />
         ) : null}
@@ -69,7 +69,7 @@ function Thread(props) {
             className="image"
             src={props.image}
           />
-          <div className="threadContainer">
+          <div className="threadInfoContainer">
             <div className="user" id="user">
               {props.user ? props.user : "Anyonymous"}
             </div>

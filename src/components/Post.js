@@ -3,17 +3,17 @@ import "./Post.css";
 
 function Post(props) {
   const [imgSize, setImgSize] = useState({
-    maxHeight: "15vh",
+    maxHeight: "15wh",
   });
 
   const handleImageSize = () => {
-    if (imgSize.maxHeight === "15vh") {
+    if (imgSize.maxHeight === "15vw") {
       setImgSize({
-        maxHeight: "40vh",
+        maxHeight: "30vw",
       });
     } else {
       setImgSize({
-        maxHeight: "15vh",
+        maxHeight: "15vw",
       });
     }
   };
@@ -47,8 +47,9 @@ function Post(props) {
             No. {props.postNo}
           </div>
         </div>
-        <div className="postText">{props.text}</div>
       </div>
+
+      <p class="postText">{props.text}</p>
     </div>
   );
 }

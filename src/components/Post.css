@@ -4,23 +4,16 @@
   padding: 0.5rem;
   margin: 10px;
   font-size: 0.7rem;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  width: fit-content;
-  border-radius: 9px;
-  box-shadow: 2px 2px 1px #D3D3D3	;
-}
-.postImage{
-   float: left;
-   max-height: 150px;
-   /* height: auto; */
-   margin-right: 10px;
+  /* width: fit-content; */
+  border-radius: 8px;
+  box-shadow: 2px 1px 1px #D3D3D3	;
 }
 
-.postContainer{
-  display: flex;
-  flex-direction: column;
+.postImage{
+   margin-right: 10px;
+   float: left;
 }
+
 
 .posterInfo{
     display: inline-flex;
@@ -32,4 +25,5 @@
   padding: 5px;
   overflow-wrap: break-word;
   word-break: break-all;
+  word-wrap: normal ;
 }
