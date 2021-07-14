@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import { firebase } from "@firebase/app";
+
 import Thread from "./components/Thread";
 import Header from "./components/Header";
-import { firebase } from "@firebase/app";
 import PostForm from "./components/PostForm.js";
+import ShowPostForm from "./components/ShowPostForm";
 
 function App() {
   const [threadPosts, setThreadPosts] = useState([]);
-  const [showPostForm, setShowPostForm] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   // increases firestore count
 
@@ -18,6 +20,7 @@ function App() {
     return mappedBoard;
   }
 
+  //
   useEffect(() => {
     firebase
       .firestore()
@@ -29,30 +32,33 @@ function App() {
           data.id = _doc.id;
           return data;
         });
+
         setThreadPosts(firebaseThreads);
         // console.log("Threads", threadPosts);
       });
   }, []);
 
   function openCloseForm() {
-    setShowPostForm(!showPostForm);
+    setShowForm(!showForm);
   }
 
   return (
     <div className="App">
       <Header chan="Beschan" desc="A safe space for your catboy fantasies" />
-      {!showPostForm ? (
-        <div className="showButton">
-          <button className="showButton" onClick={() => openCloseForm()}>
-            Add a thread!
-          </button>
-        </div>
-      ) : (
-        <div>
-          <PostForm openCloseForm={openCloseForm} thread={true} />
-          <button onClick={() => setShowPostForm(!showPostForm)}>Close</button>
-        </div>
-      )}
+      <ShowPostForm showForm={showForm} openCloseForm={openCloseForm} />
+      {/* {!showForm ? ( */}
+      {/*   <div className="showButton"> */}
+      {/*     <button className="showButton" onClick={() => openCloseForm()}> */}
+      {/*       Add a thread! */}
+      {/*     </button> */}
+      {/*   </div> */}
+      {/* ) : ( */}
+      {/*   <div> */}
+      {/*     <PostForm openCloseForm={openCloseForm} thread={true} /> */}
+      {/*     <button onClick={openCloseForm}>Close</button> */}
+      {/*   </div> */}
+      {/* )} */}
+
       <div className="Threads">
         {threadPosts.map((thread, index) => {
           return (
@@ -69,18 +75,8 @@ function App() {
           );
         })}
       </div>
-      {!showPostForm ? (
-        <div className="showButton">
-          <button className="showButton" onClick={() => openCloseForm()}>
-            Add a thread!
-          </button>
-        </div>
-      ) : (
-        <div>
-          <PostForm openCloseForm={openCloseForm} thread={true} />
-          <button onClick={() => openCloseForm()}>Close</button>
-        </div>
-      )}
+
+      <ShowPostForm showForm={showForm} openCloseForm={openCloseForm} />
     </div>
   );
 }
