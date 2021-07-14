@@ -66,6 +66,7 @@ function PostForm(props) {
             window.location.reload(false);
           });
         });
+      // if its not a thread add it to a post based on props.id
     } else {
       const collection = db
         .collection("board")
@@ -130,6 +131,7 @@ function PostForm(props) {
             setName(e.target.value);
           }}
           className="postName"
+          maxLength="25"
         />
         <input
           placeholder="title"
@@ -139,6 +141,7 @@ function PostForm(props) {
             setTitle(e.target.value);
           }}
           className="postTitle"
+          maxLength="30"
         />
         <textarea
           placeholder="comment"
@@ -149,6 +152,7 @@ function PostForm(props) {
           }}
           required
           className="postText"
+          maxLength="1000"
         />
 
         {props.thread ? (
