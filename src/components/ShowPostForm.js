@@ -1,8 +1,6 @@
 import { useState } from "react";
 import PostForm from "./PostForm";
 
-// TODO Currently posting images as a reply doesnt work
-
 // Receives an optional props.id, if thread is true, forwards the post form with na id to
 // the PostForm.
 // If it has post.id and thread is set to true, PostForm knows it's a reply.
