@@ -63,9 +63,7 @@ function Thread(props) {
         <div className="threadInfo">
           {/*<img className="image" src={props.image} /> */}
           <img
-            onClick={() => {
-              handleImageSize();
-            }}
+            onClick={handleImageSize}
             style={imgSize}
             className="image"
             src={props.image}

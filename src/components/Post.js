@@ -26,9 +26,7 @@ function Post(props) {
             className="postImage"
             src={props.image}
             style={imgSize}
-            onClick={() => {
-              handleImageSize();
-            }}
+            onClick={handleImageSize}
           />
         )}
         <div class="posterInfo">
