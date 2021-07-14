@@ -15,8 +15,6 @@
 .postText{
   grid-column-start: span 2;
 }
-.postButton{
-}
 
 label{
   margin-right: 10px;

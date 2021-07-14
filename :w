@@ -3,24 +3,25 @@
   background-color: #757474;
   padding: 0.5rem;
   margin: 10px;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   /* width: fit-content; */
   border-radius: 8px;
   box-shadow: 2px 1px 1px #D3D3D3	;
   /* display: flex; */
-  overflow: auto;
+  width: 90vw;
 }
 
 .postImage{
+   display: inline-block;
+   background-color: red;
+   border: 20px;
    margin-right: 10px;
-   float: left;
-    max-height: "15vh",
+   width: 15vh;
+   /* float: left; */
 }
 
-
 .postContainer{
-  display: flex;
-  flex-wrap: wrap;
+  align-self: flex-end;
 }
 
 .posterInfo{
@@ -34,5 +35,4 @@
   overflow-wrap: break-word;
   word-break: break-all;
   word-wrap: normal ;
-  vertical-align: text-top;
 }
