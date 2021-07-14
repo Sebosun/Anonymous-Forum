@@ -1,37 +1,36 @@
 import React, { useState } from "react";
 import "./Post.css";
-import ShowPostForm from "./ShowPostForm";
 
 function Post(props) {
   const [imgSize, setImgSize] = useState({
-    height: "15vh",
+    maxHeight: "15vh",
   });
 
-  function handleImageSize() {
-    if (imgSize.height === "15vh") {
+  const handleImageSize = () => {
+    if (imgSize.maxHeight === "15vh") {
       setImgSize({
-        height: "50vh",
+        maxHeight: "40vh",
       });
     } else {
       setImgSize({
-        height: "15vh",
+        maxHeight: "15vh",
       });
     }
-  }
+  };
 
   return (
     <div className="Post">
+      {props.image === "" ? null : (
+        <img
+          className="postImage"
+          style={imgSize}
+          onClick={handleImageSize}
+          src={props.image}
+        />
+      )}
       <div className="postContainer">
-        {props.image === "" ? null : (
-          <img
-            className="postImage"
-            src={props.image}
-            style={imgSize}
-            onClick={handleImageSize}
-          />
-        )}
-        <div class="posterInfo">
-          <div id="user">{props.user ? props.user : "Anyonymous"}</div>
+        <div className="posterInfo">
+          <div id="user">Anonymous</div>
           <div>{props.title}</div>
           {props.time ? (
             <div>
@@ -48,7 +47,7 @@ function Post(props) {
             No. {props.postNo}
           </div>
         </div>
-        <div id="postText">{props.text}</div>
+        <div className="postText">{props.text}</div>
       </div>
     </div>
   );

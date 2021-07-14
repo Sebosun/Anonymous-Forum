@@ -3,32 +3,31 @@
   background-color: #757474;
   padding: 10px;
   margin: 10px;
-  grid-template-rows: auto 1fr;
-  grid-gap: 10px;
   font-size: 0.7rem;
   display: grid;
+  grid-template-columns: auto 1fr;
+  width: auto;
 }
-
 .postImage{
- float: left;
- height: auto;
- margin-right: 10px;
+   float: left;
+   max-height: 150px;
+   /* height: auto; */
+   margin-right: 10px;
 }
 
 .postContainer{
-
+  display: flex;
+  flex-direction: column;
 }
 
 .posterInfo{
-  display: inline-flex;
-  /* display: flex; */
-  gap: 10px;
-  padding-bottom: 10px;
+    display: inline-flex;
+    gap: 10px;
+    padding-bottom: 10px;
 }
 
+.postText{
+  overflow-wrap: break-word;
 
-#postText{
-  padding-left: 10px;
-  font-size: 0.8rem;
-  color: beige;
+  word-break: break-all;
 }

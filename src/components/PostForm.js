@@ -155,6 +155,7 @@ function PostForm(props) {
           maxLength="1000"
         />
 
+        {/* TODO Some indiciation that the file is being uploaded. Atm you can just wait there without any sign that shit is working */}
         {props.thread ? (
           <input
             className="postFile"
