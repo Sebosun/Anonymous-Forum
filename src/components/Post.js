@@ -21,6 +21,12 @@ function Post(props) {
   return (
     <div className="Post">
       <div className="postContainer">
+        <img
+          className="postImage"
+          style={imgSize}
+          onClick={handleImageSize}
+          src={props.image}
+        />
         <div className="posterInfo">
           <div id="user">Anonymous</div>
           <div>{props.title}</div>
@@ -39,16 +45,8 @@ function Post(props) {
             No. {props.postNo}
           </div>
         </div>
+        <p class="postText">{props.text}</p>
       </div>
-      <p class="postText">
-        <img
-          className="postImage"
-          style={imgSize}
-          onClick={handleImageSize}
-          src={props.image}
-        />
-        {props.text}
-      </p>
     </div>
   );
 }
