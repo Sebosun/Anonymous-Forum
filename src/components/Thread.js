@@ -3,6 +3,7 @@ import "./Thread.css";
 import Post from "./Post.js";
 import { firebase } from "@firebase/app";
 import PostForm from "./PostForm";
+import ShowPostForm from "./ShowPostForm";
 
 function Thread(props) {
   // TODO expand image on click
@@ -56,7 +57,7 @@ function Thread(props) {
     <div className="Thread">
       <div className="threadReplyContainer">
         {replyVisible ? (
-          <PostForm thread={false} openCloseForm={clickReply} id={props.id} />
+          <ShowPostForm hidden={true} thread={false} id={props.id} />
         ) : null}
 
         {/* split this into two, image is one part of the post, and the content second */}
@@ -101,11 +102,12 @@ function Thread(props) {
             time={post.created}
             text={post.text}
             image={post.image}
-            clickReply={clickReply}
             user={post.user}
+            clickReply={clickReply}
           />
         );
       })}
+      <ShowPostForm thread={false} id={props.id} />
     </div>
   );
 }

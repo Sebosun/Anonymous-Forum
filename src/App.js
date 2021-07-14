@@ -8,7 +8,6 @@ import ShowPostForm from "./components/ShowPostForm";
 
 function App() {
   const [threadPosts, setThreadPosts] = useState([]);
-  const [showForm, setShowForm] = useState(false);
 
   // increases firestore postCount
 
@@ -37,14 +36,10 @@ function App() {
       });
   }, []);
 
-  function openCloseForm() {
-    setShowForm(!showForm);
-  }
-
   return (
     <div className="App">
       <Header chan="Beschan" desc="A safe space for your catboy fantasies" />
-      <ShowPostForm showForm={showForm} openCloseForm={openCloseForm} />
+      <ShowPostForm thread={true} />
 
       <div className="Threads">
         {threadPosts.map((thread, index) => {
@@ -62,7 +57,7 @@ function App() {
           );
         })}
       </div>
-      <ShowPostForm showForm={showForm} openCloseForm={openCloseForm} />
+      <ShowPostForm thread={true} />
     </div>
   );
 }

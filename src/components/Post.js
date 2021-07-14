@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Post.css";
+import ShowPostForm from "./ShowPostForm";
 
 function Post(props) {
   const [imgSize, setImgSize] = useState({
