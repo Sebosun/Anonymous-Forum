@@ -32,7 +32,7 @@ function Post(props) {
           />
         )}
         <div class="posterInfo">
-          <div id="user">Anonymous</div>
+          <div id="user">{props.user ? props.user : "Anyonymous"}</div>
           <div>{props.title}</div>
           {props.time ? (
             <div>
