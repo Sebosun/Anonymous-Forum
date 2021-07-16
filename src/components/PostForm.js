@@ -46,53 +46,32 @@ function PostForm(props) {
   async function addNewThread(name, text, title, imageName) {
     const db = firebase.firestore();
     const postNo = await getNo();
-    console.log(props.thread);
-    if (props.thread === true) {
-      const collection = db.collection("board");
-
-      collection
-        .add({
-          user: name,
-          text: text,
-          title: title,
-          // user: "Anyonymous",
-          postNo: postNo,
-          created: firebase.firestore.FieldValue.serverTimestamp(),
-          image: imageName,
-        })
-        .then(() => {
-          resetToDefault();
-          incrNo().then(() => {
-            window.location.reload(false);
-          });
-        });
-      // if its not a thread add it to a post based on props.id
-    } else {
-      const collection = db
-        .collection("board")
-        .doc(props.id)
-        .collection("posts");
-
-      collection
-        .add({
-          user: name,
-          text: text,
-          title: title,
-          // user: "Anyonymous",
-          postNo: postNo,
-          created: firebase.firestore.FieldValue.serverTimestamp(),
-          image: imageName,
-        })
-        .then(() => {
-          resetToDefault();
-          incrNo().then(() => {
-            window.location.reload(false);
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    // by default assume its a thread, but if props.thread is false then it's a post
+    let collection = db.collection("board");
+    if (props.thread === false) {
+      collection = db.collection("board").doc(props.id).collection("posts");
     }
+
+    collection
+      .add({
+        user: name,
+        text: text,
+        title: title,
+        // user: "Anyonymous",
+        postNo: postNo,
+        created: firebase.firestore.FieldValue.serverTimestamp(),
+        image: imageName,
+      })
+      .then(() => {
+        resetToDefault();
+        incrNo().then(() => {
+          // window.location.reload(false);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // if its not a thread add it to a post based on props.id
   }
 
   // adds the image to the state
