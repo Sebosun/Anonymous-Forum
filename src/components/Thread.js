@@ -11,6 +11,7 @@ function Thread(props) {
   const [postsCol, setPostsCol] = useState([]);
   const [replyVisible, setReplyVisible] = useState(false);
   const [threadVisible, setThreadVisible] = useState(true);
+  const [hideText, setHideText] = useState("close");
 
   function getPostsFromThread() {
     const db = firebase.firestore();
@@ -36,17 +37,23 @@ function Thread(props) {
 
   function hideThread() {
     setThreadVisible((prevState) => !prevState);
+    setHideText((prevState) => {
+      if (prevState == "close") {
+        return props.user ? props.user : "Anyonymous";
+      } else {
+        return "close";
+      }
+    });
   }
 
   // onLoad get posts for a given Thread
   useEffect(() => {
     getPostsFromThread();
-    console.log("Posts", postsCol);
   }, []);
 
   return (
     <div className="Thread">
-      <HideElement text={"Close"} onClick={hideThread} />
+      <HideElement text={hideText} onClick={hideThread} />
       {threadVisible && (
         <div className="threadContainer">
           {replyVisible && (

@@ -1,8 +1,9 @@
 .hideContainer{
   display: inline-flex;
-  gap: 10px;
   padding-bottom: 10px;
+  gap: 3px;
 }
+
 .square{
   height: 10px;
   width: 10px;
@@ -11,5 +12,7 @@
 }
 
 .text{
-  color: beige;
+  color: greenyellow;
+  align-self: center;
+  font-size: 0.8rem;
 }
