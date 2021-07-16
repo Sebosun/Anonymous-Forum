@@ -3,6 +3,7 @@ import "./Post.css";
 import Image from "./UI/Image";
 
 function Post(props) {
+  //TODO CLEAN THIS
   const [imgSize, setImgSize] = useState({
     maxHeight: "15vh",
   });

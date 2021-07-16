@@ -25,10 +25,11 @@ body{
   align-self: stretch;
   background-color: grey;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
 .image{
-  /* height: 15vw; */
   float: left;
   margin-right: 10px;
 }

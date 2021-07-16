@@ -1,0 +1,15 @@
+.hideContainer{
+  display: inline-flex;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+.square{
+  height: 10px;
+  width: 10px;
+  background-color: beige;
+  align-self: center;
+}
+
+.text{
+  color: beige;
+}
