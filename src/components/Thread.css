@@ -28,7 +28,7 @@ body{
 }
 
 .image{
-  height: 15vw;
+  /* height: 15vw; */
   float: left;
   margin-right: 10px;
 }
