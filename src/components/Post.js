@@ -10,14 +10,13 @@ function Post(props) {
         <div className="posterInfo">
           <div id="user">Anonymous</div>
           <div>{props.title}</div>
-          {props.time ? (
+          {props.time && (
             <div>
               {props.time.toDate().toDateString() +
                 " " +
                 props.time.toDate().toLocaleTimeString()}
             </div>
-          ) : null}
-          {/* <div>{props.time.toDate().toString()}</div> */}
+          )}
           <div
             className="postNo"
             onClick={() => props.clickReply(props.postNo)}
