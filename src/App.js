@@ -18,7 +18,7 @@ function App() {
     return mappedBoard;
   }
 
-  //
+  // gets Threas from firestore on first load
   useEffect(() => {
     firebase
       .firestore()
@@ -32,7 +32,6 @@ function App() {
         });
 
         setThreadPosts(firebaseThreads);
-        // console.log("Threads", threadPosts);
       });
   }, []);
 

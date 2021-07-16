@@ -11,8 +11,8 @@ function PostForm(props) {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState(null);
 
-  // increases the psot number in meta collection
-  async function incrNo() {
+  // increases the post number in meta collection
+  async function incrPostNo() {
     const db = firebase.firestore();
     const increment = firebase.firestore.FieldValue.increment(1);
     const postNoRef = db.collection("meta").doc("data");
@@ -62,9 +62,10 @@ function PostForm(props) {
         created: firebase.firestore.FieldValue.serverTimestamp(),
         image: imageName,
       })
+      // to sie wypierdala jak nie ma zalaczonego
       .then(() => {
         resetToDefault();
-        incrNo().then(() => {
+        incrPostNo().then(() => {
           props.openCloseForm();
           // window.location.reload(false);
         });
