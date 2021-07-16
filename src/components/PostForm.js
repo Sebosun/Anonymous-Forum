@@ -65,6 +65,7 @@ function PostForm(props) {
       .then(() => {
         resetToDefault();
         incrNo().then(() => {
+          props.openCloseForm();
           // window.location.reload(false);
         });
       })
