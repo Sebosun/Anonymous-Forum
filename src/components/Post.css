@@ -1,37 +1,32 @@
-.Post{
+.Post {
   margin-top: 1rem;
   background-color: #757474;
+  /* opacity: 0.5; */
   padding: 0.5rem;
   margin: 10px;
-  font-size: 0.7rem;
+  font-size: 1em;
   /* width: fit-content; */
   border-radius: 8px;
-  box-shadow: 2px 1px 1px #D3D3D3	;
+  box-shadow: 2px 1px 1px #010101;
   overflow: auto;
   display: flex;
 }
 
-.postImage{
-   margin-right: 10px;
-   float: left;
+.postImage {
+  margin-right: 10px;
+  float: left;
 }
 
-
-.postContainer{
-  /* display: flex; */
-  /* flex-wrap: wrap; */
+.posterInfo {
+  display: inline-flex;
+  gap: 10px;
+  padding-left: 5px;
 }
 
-.posterInfo{
-    display: inline-flex;
-    gap: 10px;
-    padding-left: 5px;
-}
-
-.postText{
+.postText {
   padding: 5px;
   overflow-wrap: break-word;
   word-break: break-all;
-  word-wrap: normal ;
+  word-wrap: normal;
   vertical-align: text-top;
 }

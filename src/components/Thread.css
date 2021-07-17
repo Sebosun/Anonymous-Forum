@@ -1,15 +1,16 @@
 body{
   background-color:#101010 ;
 }
-.Thread:last-child{
-  border-bottom: none;
-}
 
 .Thread{
   padding: 10px;
   margin: 20px;
-  border-bottom: 2px solid gray;
+  /* border-bottom: 2px solid gray; */
   width: 90vw;
+}
+
+.Thread:last-child{
+  border-bottom: none;
 }
 
 .threadContainer{
@@ -20,9 +21,10 @@ body{
   grid-template-rows: auto 1fr;
   grid-gap: 10px;
   text-align: left;
-  font-size: 0.7rem;
+  font-size: 1.05em;
   align-self: stretch;
   background-color: grey;
+  opacity: 0.9;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
