@@ -62,10 +62,9 @@ function PostForm(props) {
         image: imageName,
       })
       .then(() => {
-        resetToDefault();
         incrPostNo().then(() => {
+          props.onSubmit();
           props.openCloseForm();
-          // window.location.reload(false);
         });
       })
       .catch((error) => {
@@ -78,10 +77,17 @@ function PostForm(props) {
     setImage(e.target.files[0]);
   };
 
+  const onNameChange = (e) => {
+    setName(e.target.value);
+  };
+
   const onPostSubmit = async (e) => {
     e.preventDefault();
+    // props.openCloseForm();
+    props.onSubmit();
     if (image === null) {
       addNewThread(name, text, title, "");
+      resetToDefault();
     } else {
       const file = image;
       const storageRef = firebase.storage().ref();
@@ -89,6 +95,7 @@ function PostForm(props) {
       await fileRef.put(file);
       fileRef.getDownloadURL().then((url) => {
         addNewThread(name, text, title, url);
+        resetToDefault();
       });
     }
   };
@@ -105,9 +112,7 @@ function PostForm(props) {
           placeholder="name"
           value={name}
           type="text"
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
+          onChange={onNameChange}
           className="postName"
           maxLength="25"
         />

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PostForm from "./PostForm";
+import Roller from "./UI/Roller";
 
 // Receives an optional props.id, if thread is true, forwards the post form with na id to
 // the PostForm.
@@ -7,31 +8,45 @@ import PostForm from "./PostForm";
 // It takes post.id and uses it to add a reply to a particular thread
 function ShowPostForm(props) {
   const [showForm, setShowForm] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   function openCloseForm() {
     setShowForm((prevState) => !prevState);
   }
 
-  return (
-    <div>
-      {showForm ? (
-        <div>
-          <PostForm
-            openCloseForm={openCloseForm}
-            id={props.id}
-            thread={props.thread}
-          />
-          <button onClick={openCloseForm}>Close</button>
-        </div>
-      ) : (
-        <div className="showButton">
-          <button className="showButton" onClick={openCloseForm}>
-            {`Add a ${props.thread ? "Thread!" : "Post!"}`}
-          </button>
-        </div>
-      )}
-    </div>
-  );
+  const onSubmit = () => {
+    setIsLoading((prev) => !prev);
+  };
+
+  if (isLoading) {
+    return (
+      <div className="loaderContainer">
+        <Roller />
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        {showForm ? (
+          <div>
+            <PostForm
+              openCloseForm={openCloseForm}
+              id={props.id}
+              thread={props.thread}
+              onSubmit={onSubmit}
+            />
+            <button onClick={openCloseForm}>Close</button>
+          </div>
+        ) : (
+          <div className="showButton">
+            <button className="showButton" onClick={openCloseForm}>
+              {`Add a ${props.thread ? "Thread!" : "comment!"}`}
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  }
 }
 
 export default ShowPostForm;

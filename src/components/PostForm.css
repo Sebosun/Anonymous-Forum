@@ -19,3 +19,8 @@
 label{
   margin-right: 10px;
 }
+
+.loaderContainer{
+  display: flex;
+  justify-content: center;
+}
