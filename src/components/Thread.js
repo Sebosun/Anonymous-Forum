@@ -12,14 +12,26 @@ function Thread(props) {
   const [replyVisible, setReplyVisible] = useState(false);
   const [threadVisible, setThreadVisible] = useState(true);
   const [hideText, setHideText] = useState("close");
+  const [threadSize, setThreadSize] = useState("");
 
+  function getNumberOfElements() {
+    const db = firebase.firestore();
+    db.collection("board")
+      .doc(props.id)
+      .collection("posts")
+      .get()
+      .then((snap) => {
+        setThreadSize(snap.size);
+      });
+  }
   function getPostsFromThread() {
     const db = firebase.firestore();
     const posts = db
       .collection("board")
       .doc(props.id)
       .collection("posts")
-      .orderBy("postNo", "asc");
+      .orderBy("postNo", "asc")
+      .limit(3);
 
     posts.onSnapshot((serverUpdate) => {
       const firebasePosts = serverUpdate.docs.map((_doc) => {
@@ -48,6 +60,7 @@ function Thread(props) {
 
   // onLoad get posts for a given Thread
   useEffect(() => {
+    getNumberOfElements();
     getPostsFromThread();
   }, []);
 
@@ -103,6 +116,7 @@ function Thread(props) {
             );
           })}
           <ShowPostForm thread={false} id={props.id} />
+          {threadSize}
         </div>
       )}
     </div>
