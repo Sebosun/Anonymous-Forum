@@ -39,11 +39,6 @@ body{
   gap: 10px;
 }
 
-.postText{
-  display: flex;
-  flex-direction: column;
-}
-
 .threadInfoContainer{
   display: inline-flex;
   gap: 10px;

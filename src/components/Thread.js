@@ -12,8 +12,10 @@ function Thread(props) {
   const [postsCol, setPostsCol] = useState([]);
   const [replyVisible, setReplyVisible] = useState(false);
   const [threadVisible, setThreadVisible] = useState(true);
-  const [hideText, setHideText] = useState("close");
-  const [threadSize, setThreadSize] = useState("");
+
+  const [textOfHideThread, setTextOfHideThread] = useState("close");
+  const [threadExpansion, setThreadExpansion] = useState(false);
+  const [threadSize, setThreadSize] = useState(0);
 
   function getNumberOfElements() {
     const db = firebase.firestore();
@@ -26,14 +28,24 @@ function Thread(props) {
       });
   }
 
-  function getPostsFromThread() {
+  function getPostsFromThread(expand) {
     const db = firebase.firestore();
-    const posts = db
-      .collection("board")
-      .doc(props.id)
-      .collection("posts")
-      .orderBy("postNo", "asc")
-      .limit(3);
+    let posts = [];
+    console.log(expand);
+    if (expand == "mode") {
+      posts = db
+        .collection("board")
+        .doc(props.id)
+        .collection("posts")
+        .orderBy("postNo", "asc");
+    } else {
+      posts = db
+        .collection("board")
+        .doc(props.id)
+        .collection("posts")
+        .orderBy("postNo", "asc")
+        .limit(3);
+    }
 
     posts.onSnapshot((serverUpdate) => {
       const firebasePosts = serverUpdate.docs.map((_doc) => {
@@ -49,9 +61,9 @@ function Thread(props) {
     setReplyVisible((prevState) => !prevState);
   }
 
-  function hideThread() {
+  function onHideThread() {
     setThreadVisible((prevState) => !prevState);
-    setHideText((prevState) => {
+    setTextOfHideThread((prevState) => {
       if (prevState == "close") {
         return props.user ? props.user : "Anyonymous";
       } else {
@@ -59,16 +71,20 @@ function Thread(props) {
       }
     });
   }
+  function onExpand() {
+    setThreadExpansion(true);
+    getPostsFromThread("mode");
+  }
 
   // onLoad get posts for a given Thread
   useEffect(() => {
     getNumberOfElements();
-    getPostsFromThread();
+    getPostsFromThread("nope");
   }, []);
 
   return (
     <div className="Thread">
-      <HideElement text={hideText} onClick={hideThread} />
+      <HideElement text={textOfHideThread} onClick={onHideThread} />
       {threadVisible && (
         <div className="threadContainer">
           {replyVisible && (
@@ -100,7 +116,10 @@ function Thread(props) {
             <div className="postText">
               <p>{props.text}</p>
             </div>
-            <ExpandThread postNo={threadSize} />
+            {/* likely could be done differently, but it works so... */}
+            {threadExpansion || threadSize - 3 <= 0 ? null : (
+              <ExpandThread onClick={onExpand} postNo={threadSize} />
+            )}
           </div>
 
           {postsCol.map((post, index) => {
