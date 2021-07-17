@@ -1,0 +1,11 @@
+.expandThread{
+  display: inline-flex;
+  gap: 5px;
+  font-size: 0.5rem;
+}
+
+.expand{
+  cursor: pointer;
+  color: #00ff46;
+user-select: none;
+}

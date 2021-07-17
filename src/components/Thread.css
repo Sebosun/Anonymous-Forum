@@ -4,6 +4,7 @@ body{
 .Thread:last-child{
   border-bottom: none;
 }
+
 .Thread{
   padding: 10px;
   margin: 20px;
@@ -11,12 +12,10 @@ body{
   width: 90vw;
 }
 
-
 .threadContainer{
   padding: 10px;
   color: white;
   padding: 10px;
-  /* margin: 10px; */
   display: grid;
   grid-template-rows: auto 1fr;
   grid-gap: 10px;
@@ -29,26 +28,31 @@ body{
   flex-direction: column;
 }
 
+
 .image{
   float: left;
   margin-right: 10px;
 }
 
 .threadInfo{
-  /* display: flex; */
+  /* display: inline-flex; */
   gap: 10px;
+}
+
+.postText{
+  display: flex;
+  flex-direction: column;
 }
 
 .threadInfoContainer{
   display: inline-flex;
   gap: 10px;
-  padding-bottom: 10px;
+  /* padding-bottom: 10px; */
 }
 
 .postNo{
   cursor: pointer;
 }
-
 
 #user{
  color: #00ff46;

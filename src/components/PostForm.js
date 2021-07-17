@@ -57,12 +57,10 @@ function PostForm(props) {
         user: name,
         text: text,
         title: title,
-        // user: "Anyonymous",
         postNo: postNo,
         created: firebase.firestore.FieldValue.serverTimestamp(),
         image: imageName,
       })
-      // to sie wypierdala jak nie ma zalaczonego
       .then(() => {
         resetToDefault();
         incrPostNo().then(() => {
@@ -73,7 +71,6 @@ function PostForm(props) {
       .catch((error) => {
         console.log(error);
       });
-    // if its not a thread add it to a post based on props.id
   }
 
   // adds the image to the state

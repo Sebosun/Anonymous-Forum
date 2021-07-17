@@ -5,6 +5,7 @@ import { firebase } from "@firebase/app";
 import ShowPostForm from "./ShowPostForm";
 import Image from "./UI/Image";
 import HideElement from "./UI/HideElement";
+import ExpandThread from "./UI/ExpandThread";
 
 function Thread(props) {
   // TODO clicking postNo should open up form and fill it automatically with >>7
@@ -24,6 +25,7 @@ function Thread(props) {
         setThreadSize(snap.size);
       });
   }
+
   function getPostsFromThread() {
     const db = firebase.firestore();
     const posts = db
@@ -95,9 +97,10 @@ function Thread(props) {
                 No. {props.postNo}
               </div>
             </div>
-            <div className="postText" id="postText">
-              {props.text}
+            <div className="postText">
+              <p>{props.text}</p>
             </div>
+            <ExpandThread postNo={threadSize} />
           </div>
 
           {postsCol.map((post, index) => {
@@ -116,7 +119,6 @@ function Thread(props) {
             );
           })}
           <ShowPostForm thread={false} id={props.id} />
-          {threadSize}
         </div>
       )}
     </div>
