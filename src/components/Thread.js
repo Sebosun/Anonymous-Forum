@@ -37,22 +37,24 @@ function Thread(props) {
         .collection("board")
         .doc(props.id)
         .collection("posts")
-        .orderBy("postNo", "asc");
+        .orderBy("postNo", "desc");
     } else {
       posts = db
         .collection("board")
         .doc(props.id)
         .collection("posts")
-        .orderBy("postNo", "asc")
+        .orderBy("postNo", "desc")
         .limit(3);
     }
 
+    console.log(posts);
     posts.onSnapshot((serverUpdate) => {
       const firebasePosts = serverUpdate.docs.map((_doc) => {
         let data = _doc.data();
         data.id = _doc.id;
         return data;
       });
+      firebasePosts.reverse();
       setPostsCol(firebasePosts);
     });
   }
