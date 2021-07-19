@@ -11,25 +11,25 @@ import ShowPostForm from "./components/ShowPostForm";
 function App() {
   const [threadPosts, setThreadPosts] = useState([]);
 
-  const handleNewThread = () => {
-    firebase
-      .firestore()
-      .collection("board")
-      .orderBy("created", "desc")
-      .onSnapshot((serverUpdate) => {
-        const firebaseThreads = serverUpdate.docs.map((item) => {
-          let data = item.data();
+  // const handleNewThread = () => {
+  //   firebase
+  //     .firestore()
+  //     .collection("board")
+  //     .orderBy("created", "desc")
+  //     .onSnapshot((serverUpdate) => {
+  //       const firebaseThreads = serverUpdate.docs.map((item) => {
+  //         let data = item.data();
 
-          // console.log(data.id);
-          data.id = item.id;
-          // console.log(data.id);
-          return data;
-        });
+  //         // console.log(data.id);
+  //         data.id = item.id;
+  //         // console.log(data.id);
+  //         return data;
+  //       });
 
-        console.log("NEW THREAD B ITCHES");
-        setThreadPosts([...firebaseThreads]);
-      });
-  };
+  //       console.log("NEW THREAD B ITCHES");
+  //       setThreadPosts([...firebaseThreads]);
+  //     });
+  // };
 
   // gets Threas from firestore on first load
   useEffect(() => {
@@ -54,7 +54,7 @@ function App() {
   return (
     <div className="App">
       <Header chan="Beschan" desc="A safe space for your catboy fantasies" />
-      <ShowPostForm handleNewThread={handleNewThread} thread={true} />
+      <ShowPostForm thread={true} />
 
       <div className="Threads">
         {threadPosts.map((thread, index) => {
