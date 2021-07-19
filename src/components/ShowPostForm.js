@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PostForm from "./PostForm";
 import Roller from "./UI/Roller";
+import Button from "./UI/Button";
 
 // Receives an optional props.id, if thread is true, forwards the post form with na id to
 // the PostForm.
@@ -35,13 +36,13 @@ function ShowPostForm(props) {
               thread={props.thread}
               onSubmit={onSubmit}
             />
-            <button onClick={openCloseForm}>Close</button>
+            <Button onClick={openCloseForm}>Close</Button>
           </div>
         ) : (
           <div className="showButton">
-            <button className="showButton" onClick={openCloseForm}>
+            <Button onClick={openCloseForm}>
               {`Add a ${props.thread ? "Thread!" : "comment!"}`}
-            </button>
+            </Button>
           </div>
         )}
       </div>

@@ -6,17 +6,10 @@ import Thread from "./components/Thread";
 import Header from "./components/Header";
 import ShowPostForm from "./components/ShowPostForm";
 
+// Adress the font issue since it's pretty bad atm
+
 function App() {
   const [threadPosts, setThreadPosts] = useState([]);
-
-  // increases firestore postCount
-
-  async function getThreads() {
-    const board = await firebase.firestore().collection("board").get();
-    const mappedBoard = board.docs.map((doc) => doc.data());
-    // console.log(mappedBoard);
-    return mappedBoard;
-  }
 
   // gets Threas from firestore on first load
   useEffect(() => {
