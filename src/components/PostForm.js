@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Button from "./UI/Button";
 import "./PostForm.css";
 import { firebase } from "@firebase/app";
 
@@ -150,7 +151,7 @@ function PostForm(props) {
         ) : (
           <input className="postFile" type="file" onChange={onFileChange} />
         )}
-        <button className="postSubmit">Submit</button>
+        <Button className="postSubmit">Submit</Button>
       </form>
     </div>
   );
