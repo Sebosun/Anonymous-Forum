@@ -64,6 +64,16 @@ function PostForm(props) {
       })
       .then(() => {
         incrPostNo().then(() => {
+          if (props.thread) {
+            props.handleNewThread({
+              user: name,
+              text: text,
+              title: title,
+              postNo: postNo,
+              created: firebase.firestore.FieldValue.serverTimestamp(),
+              image: imageName,
+            });
+          }
           props.onSubmit();
           props.openCloseForm();
         });

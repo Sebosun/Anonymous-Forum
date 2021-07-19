@@ -17,7 +17,7 @@ function Thread(props) {
   const [threadExpansion, setThreadExpansion] = useState(false);
   const [threadSize, setThreadSize] = useState(0);
 
-  function getNumberOfElements() {
+  const getNumberOfElements = () => {
     const db = firebase.firestore();
     db.collection("board")
       .doc(props.id)
@@ -26,13 +26,12 @@ function Thread(props) {
       .then((snap) => {
         setThreadSize(snap.size);
       });
-  }
+  };
 
-  function getPostsFromThread(expand) {
+  const getPostsFromThread = (expand) => {
     const db = firebase.firestore();
     let posts = [];
-    console.log(expand);
-    if (expand == "mode") {
+    if (expand == "expand") {
       posts = db
         .collection("board")
         .doc(props.id)
@@ -47,7 +46,6 @@ function Thread(props) {
         .limit(3);
     }
 
-    console.log(posts);
     posts.onSnapshot((serverUpdate) => {
       const firebasePosts = serverUpdate.docs.map((_doc) => {
         let data = _doc.data();
@@ -57,7 +55,7 @@ function Thread(props) {
       firebasePosts.reverse();
       setPostsCol(firebasePosts);
     });
-  }
+  };
 
   function clickReply() {
     setReplyVisible((prevState) => !prevState);
@@ -75,7 +73,7 @@ function Thread(props) {
   }
   function onExpand() {
     setThreadExpansion(true);
-    getPostsFromThread("mode");
+    getPostsFromThread("expand");
   }
 
   // onLoad get posts for a given Thread

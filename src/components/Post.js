@@ -24,7 +24,7 @@ function Post(props) {
             No. {props.postNo}
           </div>
         </div>
-        <p class="postText">{props.text}</p>
+        <p className="postText">{props.text}</p>
       </div>
     </div>
   );

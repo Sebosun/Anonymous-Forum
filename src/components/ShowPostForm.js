@@ -35,6 +35,7 @@ function ShowPostForm(props) {
               id={props.id}
               thread={props.thread}
               onSubmit={onSubmit}
+              handleNewThread={props.handleNewThread}
             />
             <div className="showButton">
               <Button onClick={openCloseForm}>Close</Button>
