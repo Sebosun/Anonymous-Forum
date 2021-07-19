@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./Post.css";
 import Image from "./UI/Image";
 
@@ -16,18 +15,18 @@ function Post(props) {
                 " " +
                 props.time.toDate().toLocaleTimeString()}
             </div>
-          )}{" "}
+          )}
           <div
             className="postNo"
             onClick={() => props.clickReply(props.postNo)}
           >
-            {" "}
-            No. {props.postNo}{" "}
-          </div>{" "}
-        </div>{" "}
-        <p className="postText">{props.text}</p>{" "}
-      </div>{" "}
+            No. {props.postNo}
+          </div>
+        </div>
+        <p className="postText">{props.text}</p>
+      </div>
     </div>
   );
 }
+
 export default Post;

@@ -91,7 +91,6 @@ function Thread(props) {
             <ShowPostForm hidden={true} thread={false} id={props.id} />
           )}
 
-          {/* split this into two, image is one part of the post, and the content second */}
           <div className="threadInfo">
             <Image src={props.image} />
             <div className="threadInfoContainer">
@@ -101,7 +100,6 @@ function Thread(props) {
               <div className="title">
                 {props.title ? props.title : "Thread"}
               </div>
-              {/* workaround for a bug with toDate.toString crashing the app when new thread is added */}
               {props.time ? (
                 <div className="time">
                   {props.time.toDate().toDateString() +
@@ -109,9 +107,7 @@ function Thread(props) {
                     props.time.toDate().toLocaleTimeString()}
                 </div>
               ) : null}
-              <div className="postNo" onClick={() => clickReply()}>
-                No. {props.postNo}
-              </div>
+              <div className="postNo">No. {props.postNo}</div>
             </div>
             <div className="postText">
               <p>{props.text}</p>
