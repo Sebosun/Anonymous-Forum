@@ -122,7 +122,7 @@ function Thread(props) {
           {postsCol.map((post, index) => {
             return (
               <Post
-                key={index}
+                key={post.id}
                 id={post.id}
                 postNo={post.postNo}
                 title={post.title}

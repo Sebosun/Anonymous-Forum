@@ -68,9 +68,7 @@ function PostForm(props) {
           props.openCloseForm();
         });
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   }
 
   // adds the image to the state
