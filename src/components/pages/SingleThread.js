@@ -62,15 +62,15 @@ const SingleThread = () => {
                 {threadPost[0].user ? threadPost[0].user : "Anyonymous"}
               </div>
               <div className="title">
-                {threadPost[0] ? threadPost[0].title : "Thread"}
+                {threadPost[0].title ? threadPost[0].title : "Thread"}
               </div>
-              {threadPost[0].time ? (
+              {threadPost[0].created && (
                 <div className="time">
-                  {threadPost[0].time.toDate().toDateString() +
+                  {threadPost[0].created.toDate().toDateString() +
                     " " +
-                    threadPost[0].toDate().toLocaleTimeString()}
+                    threadPost[0].created.toDate().toLocaleTimeString()}
                 </div>
-              ) : null}
+              )}
               <div>No. {threadPost[0].postNo}</div>
             </div>
             <div className="postText">

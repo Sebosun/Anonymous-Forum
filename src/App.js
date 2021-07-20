@@ -33,9 +33,9 @@ function App() {
   return (
     <div className="App">
       <Header chan="Beschan" desc="A safe space for your catboy fantasies" />
-      <ShowPostForm thread={true} />
       <Switch>
         <Route exact path="/">
+          <ShowPostForm thread={true} />
           <Threads threadArray={threadPosts} />
         </Route>
         <Route path="/thread/:threadID">
