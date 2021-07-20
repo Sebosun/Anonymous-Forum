@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Thread.css";
 import Post from "./Post.js";
 import { firebase } from "@firebase/app";
+import { Link } from "react-router-dom";
 import ShowPostForm from "./ShowPostForm";
 import Image from "./UI/Image";
 import HideElement from "./UI/HideElement";
@@ -107,25 +108,7 @@ function Thread(props) {
                     props.time.toDate().toLocaleTimeString()}
                 </div>
               ) : null}
-              <div
-                onClick={() =>
-                  props.handleSingleThread([
-                    {
-                      key: props.id,
-                      id: props.id,
-                      postNo: props.postNo,
-                      title: props.title,
-                      time: props.created,
-                      text: props.text,
-                      image: props.image,
-                      user: props.user,
-                    },
-                  ])
-                }
-                className="postNo"
-              >
-                No. {props.postNo}
-              </div>
+              <Link to={`/thread/${props.postNo}`}>No. {props.postNo}</Link>
             </div>
             <div className="postText">
               <p>{props.text}</p>

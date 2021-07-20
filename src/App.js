@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { firebase } from "@firebase/app";
+import { Switch, Route } from "react-router-dom";
 
 import Threads from "./components/Threads";
 import Header from "./components/Header";
@@ -49,10 +50,15 @@ function App() {
     <div className="App">
       <Header chan="Beschan" desc="A safe space for your catboy fantasies" />
       <ShowPostForm thread={true} />
-      <Threads
-        handleSingleThread={handleSingleThread}
-        threadArray={threadPosts}
-      />
+      <Switch>
+        <Route exact path="/">
+          <Threads
+            handleSingleThread={handleSingleThread}
+            threadArray={threadPosts}
+          />
+        </Route>
+        <Route path="/thread/:threadID"></Route>
+      </Switch>
     </div>
   );
 }
