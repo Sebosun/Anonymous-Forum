@@ -27,7 +27,7 @@ function Thread(props) {
         setThreadSize(snap.size);
       });
   };
-
+  //TODO the code within those two functions is beeing repeated, could shrink it a bit
   const getPostsFromThread = (expand) => {
     const db = firebase.firestore();
     let posts = [];
@@ -107,7 +107,25 @@ function Thread(props) {
                     props.time.toDate().toLocaleTimeString()}
                 </div>
               ) : null}
-              <div className="postNo">No. {props.postNo}</div>
+              <div
+                onClick={() =>
+                  props.handleSingleThread([
+                    {
+                      key: props.id,
+                      id: props.id,
+                      postNo: props.postNo,
+                      title: props.title,
+                      time: props.created,
+                      text: props.text,
+                      image: props.image,
+                      user: props.user,
+                    },
+                  ])
+                }
+                className="postNo"
+              >
+                No. {props.postNo}
+              </div>
             </div>
             <div className="postText">
               <p>{props.text}</p>
