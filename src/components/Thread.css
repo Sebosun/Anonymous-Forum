@@ -1,19 +1,19 @@
-body{
-  background-color:#101010 ;
+body {
+  background-color: #101010;
 }
 
-.Thread{
+.Thread {
   padding: 10px;
   margin: 20px;
   /* border-bottom: 2px solid gray; */
   width: 90vw;
 }
 
-.Thread:last-child{
+.Thread:last-child {
   border-bottom: none;
 }
 
-.threadContainer{
+.threadContainer {
   padding: 10px;
   color: white;
   padding: 10px;
@@ -30,27 +30,26 @@ body{
   flex-direction: column;
 }
 
-
-.image{
+.image {
   float: left;
   margin-right: 10px;
 }
 
-.threadInfo{
+.threadInfo {
   /* display: inline-flex; */
   gap: 10px;
 }
 
-.threadInfoContainer{
+.threadInfoContainer {
   display: inline-flex;
   gap: 10px;
   /* padding-bottom: 10px; */
 }
 
-.postNo{
+.postNo {
   cursor: pointer;
 }
 
-#user{
- color: #00ff46;
+#user {
+  color: #00ff46;
 }

@@ -1,11 +1,14 @@
-.hideContainer{
+.hideContainer {
   display: inline-flex;
   padding-bottom: 10px;
+  padding-top: 15px;
   gap: 3px;
   cursor: pointer;
+
+  align-self: flex-start;
 }
 
-.square{
+.square {
   cursor: pointer;
   height: 10px;
   width: 10px;
@@ -13,8 +16,8 @@
   align-self: center;
 }
 
-.text{
-  color: greenyellow;
+.text {
+  color: #00ff46;
   align-self: center;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }

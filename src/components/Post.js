@@ -1,30 +1,35 @@
-import "./Post.css";
+import classes from "./Post.module.css";
 import { useState } from "react";
 import Image from "./UI/Image";
 import HideElement from "./UI/HideElement";
 
 function Post(props) {
   const [postVisible, setPostVisible] = useState(true);
-  const [textOfHidePost, setTextOfHidePost] = useState("close");
+  const [textOfHidePost, setTextOfHidePost] = useState("");
 
   function onHideThread() {
     setPostVisible((prevState) => !prevState);
+    // this kind of doesnt make sense, but it works fine lmao
     setTextOfHidePost((prevState) => {
-      if (prevState == "close") {
-        return props.user ? props.user : "Anyonymous";
+      if (postVisible === false) {
+        return "";
       } else {
-        return "close";
+        return props.user ? props.user : "Anonymous";
       }
     });
   }
   return (
-    <main>
-      <HideElement text={textOfHidePost} onClick={onHideThread} />
+    <div className={classes.postContainer}>
+      <HideElement
+        className={classes.hideElem}
+        text={textOfHidePost}
+        onClick={onHideThread}
+      />
       {postVisible && (
-        <div className="Post">
-          <div className="postContainer">
+        <div className={classes.Post}>
+          <div>
             <Image src={props.image} />
-            <div className="posterInfo">
+            <div className={classes.posterInfo}>
               <div id="user">Anonymous</div>
               <div>{props.title}</div>
               {props.time && (
@@ -36,11 +41,11 @@ function Post(props) {
               )}
               <div className="postNo">No. {props.postNo}</div>
             </div>
-            <p className="postText">{props.text}</p>
+            <p className={classes.postText}>{props.text}</p>
           </div>
         </div>
       )}
-    </main>
+    </div>
   );
 }
 
