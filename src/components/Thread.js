@@ -91,7 +91,6 @@ function Thread(props) {
           {replyVisible && (
             <ShowPostForm hidden={true} thread={false} id={props.id} />
           )}
-
           <div className="threadInfo">
             <Image src={props.image} />
             <div className="threadInfoContainer">
@@ -108,7 +107,10 @@ function Thread(props) {
                     props.time.toDate().toLocaleTimeString()}
                 </div>
               ) : null}
-              <Link to={`/bes-chan/thread/${props.postNo}`}>
+              <Link
+                style={{ textDecoration: "none", color: "inherit" }}
+                to={`/bes-chan/thread/${props.postNo}`}
+              >
                 No. {props.postNo}
               </Link>
             </div>
@@ -121,7 +123,7 @@ function Thread(props) {
             )}
           </div>
 
-          {postsCol.map((post, index) => {
+          {postsCol.map((post) => {
             return (
               <Post
                 key={post.id}
