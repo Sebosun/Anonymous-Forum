@@ -5,7 +5,7 @@ import "./Header.css";
 function Header(props) {
   return (
     <div className="header">
-      <Link to="/">
+      <Link to="/bes-chan/">
         <h1>{props.chan}</h1>
       </Link>
       <p>{props.desc}</p>

@@ -108,7 +108,9 @@ function Thread(props) {
                     props.time.toDate().toLocaleTimeString()}
                 </div>
               ) : null}
-              <Link to={`/thread/${props.postNo}`}>No. {props.postNo}</Link>
+              <Link to={`/bes-chan/thread/${props.postNo}`}>
+                No. {props.postNo}
+              </Link>
             </div>
             <div className="postText">
               <p>{props.text}</p>
