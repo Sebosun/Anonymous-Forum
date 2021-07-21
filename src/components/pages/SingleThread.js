@@ -6,6 +6,9 @@ import Image from "../UI/Image";
 import ShowPostForm from "../ShowPostForm";
 import Post from "../Post";
 
+import styles from "./SingleThread.module.css";
+import classes from "./SingleThread.module.css";
+
 const SingleThread = () => {
   const params = useParams();
   const [postsCol, setPostsCol] = useState([]);
@@ -53,7 +56,7 @@ const SingleThread = () => {
     return null;
   } else {
     return (
-      <div className="Thread">
+      <div className={classes.Thread}>
         <div className="threadContainer">
           <div className="threadInfo">
             <Image src={threadPost[0].image} />
