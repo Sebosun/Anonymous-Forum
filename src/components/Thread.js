@@ -29,6 +29,7 @@ function Thread(props) {
       });
   };
   //TODO the code within those two functions is beeing repeated, could shrink it a bit
+  // TODO theres a bug that if you add a new comment, only the 3 last are displayed, it doesnt add it to the list and doesnt display the "skipped x amount of posts"
   const getPostsFromThread = (expand) => {
     const db = firebase.firestore();
     let posts = [];
