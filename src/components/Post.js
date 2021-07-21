@@ -16,12 +16,7 @@ function Post(props) {
                 props.time.toDate().toLocaleTimeString()}
             </div>
           )}
-          <div
-            className="postNo"
-            onClick={() => props.clickReply(props.postNo)}
-          >
-            No. {props.postNo}
-          </div>
+          <div className="postNo">No. {props.postNo}</div>
         </div>
         <p className="postText">{props.text}</p>
       </div>
