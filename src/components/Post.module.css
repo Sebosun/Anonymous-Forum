@@ -1,12 +1,11 @@
 .postContainer {
   display: flex;
-  margin: 10px 0 5px 5px;
+  /* margin: 10px 0 5px 5px; */
 }
 
 .Post {
   margin-top: 1rem;
   background-color: #757474;
-  /* opacity: 0.5; */
   padding: 0.5rem;
   margin: 10px;
   font-size: 1em;
