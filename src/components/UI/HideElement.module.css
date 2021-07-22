@@ -4,16 +4,9 @@
   padding-top: 15px;
   gap: 3px;
   cursor: pointer;
-
   align-self: flex-start;
-}
-
-.square {
-  cursor: pointer;
-  height: 10px;
-  width: 10px;
-  background-color: beige;
-  align-self: center;
+  align-items: center;
+  justify-items: center;
 }
 
 .text {
