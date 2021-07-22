@@ -31,7 +31,8 @@
 .postText {
   padding: 5px;
   overflow-wrap: break-word;
-  word-break: break-all;
+  /* word-break: break-all; */
   word-wrap: normal;
   vertical-align: text-top;
+  text-align: justify;
 }
