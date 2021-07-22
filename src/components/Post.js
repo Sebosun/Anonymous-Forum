@@ -30,7 +30,7 @@ function Post(props) {
           <div>
             <Image src={props.image} />
             <div className={classes.posterInfo}>
-              <div id="user">Anonymous</div>
+              <div id="user">{props.user ? props.user : "Anonymous"}</div>
               <div>{props.title}</div>
               {props.time && (
                 <div>
