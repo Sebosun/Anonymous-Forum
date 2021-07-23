@@ -14,20 +14,20 @@ body {
 }
 
 .threadContainer {
+  font-size: 1.05em;
   padding: 10px;
-  color: white;
-  padding: 10px;
+
   display: grid;
   grid-template-rows: auto 1fr;
   grid-gap: 10px;
-  text-align: left;
-  font-size: 1.05em;
-  align-self: stretch;
+
+  color: white;
   background-color: grey;
-  opacity: 0.9;
+  box-shadow: 0 2px 14px #010101;
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
+  opacity: 0.9;
+
+  text-align: left;
 }
 
 .image {

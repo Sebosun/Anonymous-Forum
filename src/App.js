@@ -36,7 +36,9 @@ function App() {
       <Switch>
         <Route exact path="/bes-chan/">
           <ShowPostForm thread={true} />
-          <Threads threadArray={threadPosts} />
+          <main>
+            <Threads threadArray={threadPosts} />
+          </main>
         </Route>
         <Route path="/bes-chan/thread/:threadID">
           <SingleThread />
