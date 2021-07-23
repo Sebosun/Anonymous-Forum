@@ -40,7 +40,7 @@ function App() {
             <Threads threadArray={threadPosts} />
           </main>
         </Route>
-        <Route path="thread/:threadID">
+        <Route path="/thread/:threadID">
           <SingleThread />
         </Route>
       </Switch>

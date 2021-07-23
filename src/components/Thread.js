@@ -110,7 +110,7 @@ function Thread(props) {
               ) : null}
               <Link
                 style={{ textDecoration: "none", color: "inherit" }}
-                to={`/bes-chan/thread/${props.postNo}`}
+                to={`/thread/${props.postNo}`}
               >
                 No. {props.postNo}
               </Link>
