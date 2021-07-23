@@ -34,13 +34,13 @@ function App() {
     <div className="App">
       <Header chan="Beschan" desc="A safe space for your catboy fantasies" />
       <Switch>
-        <Route exact path="/bes-chan/">
+        <Route exact path="/">
           <ShowPostForm thread={true} />
           <main>
             <Threads threadArray={threadPosts} />
           </main>
         </Route>
-        <Route path="/bes-chan/thread/:threadID">
+        <Route path="/thread/:threadID">
           <SingleThread />
         </Route>
       </Switch>
