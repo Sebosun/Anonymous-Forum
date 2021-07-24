@@ -1,17 +1,20 @@
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 #root {
-  /* margin: 0; */
-  /* padding: 0; */
-}
+    font-family: 'Roboto', sans-serif;
+  }
 
 body {
   /* background-image: linear-gradient(50deg, #353b36 10%, #485563 100%); */
   /* margin: 0; */
   /* padding: 0; */
   font-size: 15px;
-  background-image: url(https://i.imgur.com/sp7gunE.png);
-  background-size: cover;
+  /* background-image: url(https://i.imgur.com/sp7gunE.png); */
+  /* background-size: cover; */
+  /* background-attachment: fixed; */
+  /* background-position: left 15% bottom 85%; */
+  background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: left 15% bottom 85%;
+  background: radial-gradient(circle, rgba(28,116,135,1) 13%, rgba(23,63,152,1) 23%, rgba(46,29,120,1) 40%, rgba(45,54,94,1) 57%, rgba(35,71,116,1) 75%, rgba(30,22,47,1) 88%);
 }
 
 .showButton {
