@@ -108,10 +108,7 @@ function Thread(props) {
                     props.time.toDate().toLocaleTimeString()}
                 </div>
               ) : null}
-              <Link
-                style={{ textDecoration: "none", color: "inherit" }}
-                to={`/thread/${props.postNo}`}
-              >
+              <Link style={{ color: "#00ff46" }} to={`/thread/${props.postNo}`}>
                 No. {props.postNo}
               </Link>
             </div>

@@ -1,7 +1,3 @@
-body {
-  background-color: #101010;
-}
-
 .Thread {
   padding: 10px;
   margin: 20px;
@@ -38,7 +34,7 @@ body {
   opacity: 0.9;
 
   text-align: left;
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 .image {
@@ -55,10 +51,6 @@ body {
   display: inline-flex;
   gap: 10px;
   /* padding-bottom: 10px; */
-}
-
-.postNo {
-  cursor: pointer;
 }
 
 #user {
