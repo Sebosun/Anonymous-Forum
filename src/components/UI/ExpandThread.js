@@ -1,5 +1,5 @@
 import styles from "./ExpandThread.module.css";
-import { BsArrowsExpand, BsBoxArrowInDown } from "react-icons/bs";
+import { BsBoxArrowInDown } from "react-icons/bs";
 
 const ExpandThread = (props) => {
   return (

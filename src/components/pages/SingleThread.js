@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { firebase } from "@firebase/app";
+import { Link } from "react-router-dom";
 
 import Image from "../UI/Image";
 import ShowPostForm from "../ShowPostForm";
 import Post from "../Post";
 
-import styles from "./SingleThread.module.css";
 import classes from "./SingleThread.module.css";
 
 const SingleThread = () => {
@@ -56,49 +56,58 @@ const SingleThread = () => {
     return null;
   } else {
     return (
-      <div className={classes.Thread}>
-        <div className="threadContainer">
-          <div className="threadInfo">
-            <Image src={threadPost[0].image} />
-            <div className="threadInfoContainer">
-              <div className="user" id="user">
-                {threadPost[0].user ? threadPost[0].user : "Anyonymous"}
-              </div>
-              <div className="title">
-                {threadPost[0].title ? threadPost[0].title : "Thread"}
-              </div>
-              {threadPost[0].created && (
-                <div className="time">
-                  {threadPost[0].created.toDate().toDateString() +
-                    " " +
-                    threadPost[0].created.toDate().toLocaleTimeString()}
-                </div>
-              )}
-              <div>No. {threadPost[0].postNo}</div>
-            </div>
-            <div className="postText">
-              <p>{threadPost[0].text}</p>
-            </div>
-            {/* likely could be done differently, but it works so... */}
-          </div>
-
-          {postsCol.map((post, index) => {
-            return (
-              <Post
-                key={index}
-                id={post.id}
-                postNo={post.postNo}
-                title={post.title}
-                time={post.created}
-                text={post.text}
-                image={post.image}
-                user={post.user}
-              />
-            );
-          })}
-          <ShowPostForm thread={false} id={threadPost[0].id} />
+      <>
+        <div className={classes.return}>
+          <Link to="/">
+            <div>Return to threads</div>
+          </Link>
         </div>
-      </div>
+        <div className={classes.Thread}>
+          <div className={classes.threadContainer}>
+            <div className={classes.secondThreadContainer}>
+              <div className="threadInfo">
+                <Image src={threadPost[0].image} />
+                <div className="threadInfoContainer">
+                  <div className="user" id="user">
+                    {threadPost[0].user ? threadPost[0].user : "Anyonymous"}
+                  </div>
+                  <div className="title">
+                    {threadPost[0].title ? threadPost[0].title : "Thread"}
+                  </div>
+                  {threadPost[0].created && (
+                    <div className="time">
+                      {threadPost[0].created.toDate().toDateString() +
+                        " " +
+                        threadPost[0].created.toDate().toLocaleTimeString()}
+                    </div>
+                  )}
+                  <div>No. {threadPost[0].postNo}</div>
+                </div>
+                <div className="postText">
+                  <p>{threadPost[0].text}</p>
+                </div>
+                {/* likely could be done differently, but it works so... */}
+              </div>
+
+              {postsCol.map((post, index) => {
+                return (
+                  <Post
+                    key={index}
+                    id={post.id}
+                    postNo={post.postNo}
+                    title={post.title}
+                    time={post.created}
+                    text={post.text}
+                    image={post.image}
+                    user={post.user}
+                  />
+                );
+              })}
+            </div>
+            <ShowPostForm thread={false} id={threadPost[0].id} />
+          </div>
+        </div>
+      </>
     );
   }
 };
