@@ -8,8 +8,6 @@ import Header from "./components/Header";
 import ShowPostForm from "./components/ShowPostForm";
 import SingleThread from "./components/pages/SingleThread";
 
-// TODO: Adress the font issue since it's pretty bad atm
-
 function App() {
   const [threadPosts, setThreadPosts] = useState([]);
 
@@ -25,22 +23,28 @@ function App() {
           data.id = item.id;
           return data;
         });
-        // setThreadToDisplay([firebaseThreads[0]]);
         setThreadPosts(firebaseThreads);
       });
   }, []);
 
   return (
     <div className="App">
-      <Header chan="Beschan" desc="A safe space for your catboy fantasies" />
       <Switch>
         <Route exact path="/">
+          <Header
+            chan="Bes's"
+            desc="We cannot guarantee that your brain won't explode"
+          />
           <ShowPostForm thread={true} />
           <main>
             <Threads threadArray={threadPosts} />
           </main>
         </Route>
         <Route path="/thread/:threadID">
+          <Header
+            chan="Bes's"
+            desc="Don't tell me you expected some quirky text here"
+          />
           <SingleThread />
         </Route>
       </Switch>
