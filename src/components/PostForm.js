@@ -122,9 +122,10 @@ function PostForm(props) {
           onChange={(e) => {
             setTitle(e.target.value);
           }}
-          className="postTitle"
+          className={styles.postTitle}
           maxLength="30"
         />
+
         <textarea
           placeholder="comment"
           value={text}

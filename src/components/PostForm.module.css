@@ -29,8 +29,9 @@ label {
 
 .postName,
 .postTitle {
-  font-size: 18px;
-  padding: 5px;
+  /* font-size: 18px; */
+  font-size: 1.2em;
+  padding: 8px;
   height: 0.5em;
   border-radius: 8px;
 }
@@ -38,13 +39,16 @@ label {
 .postText {
   resize: none;
   padding: 5px;
-  font-size: 1em;
+  font-size: 1.2em;
   height: 150px;
   border-radius: 8px;
 }
 
+.postText:placehoolder {
+}
+
 .postFile {
   padding: 5px;
-  font-size: 1em;
+  font-size: 1.2em;
   color: white;
 }
