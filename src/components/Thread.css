@@ -28,6 +28,7 @@ body {
   opacity: 0.9;
 
   text-align: left;
+  overflow: auto;
 }
 
 .image {

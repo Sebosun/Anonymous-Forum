@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Button from "./UI/Button";
-import "./PostForm.css";
+import styles from "./PostForm.module.css";
 import { firebase } from "@firebase/app";
 
 function PostForm(props) {
@@ -100,19 +100,19 @@ function PostForm(props) {
   };
 
   return (
-    <div className="Form">
+    <div className={styles.Form}>
       <form
         onSubmit={(e) => {
           onPostSubmit(e);
         }}
-        className="addForm"
+        className={styles.addForm}
       >
         <input
           placeholder="name"
           value={name}
           type="text"
           onChange={onNameChange}
-          className="postName"
+          className={styles.postName}
           maxLength="25"
         />
         <input
@@ -133,7 +133,7 @@ function PostForm(props) {
             setText(e.target.value);
           }}
           required
-          className="postText"
+          className={styles.postText}
           maxLength="1000"
         />
 
@@ -141,15 +141,19 @@ function PostForm(props) {
 
         {props.thread ? (
           <input
-            className="postFile"
+            className={styles.postFile}
             type="file"
             onChange={onFileChange}
             required
           />
         ) : (
-          <input className="postFile" type="file" onChange={onFileChange} />
+          <input
+            className={styles.postFile}
+            type="file"
+            onChange={onFileChange}
+          />
         )}
-        <Button className="postSubmit">Submit</Button>
+        <Button className={styles.postSubmit}>Submit</Button>
       </form>
     </div>
   );
