@@ -43,7 +43,7 @@ function ShowPostForm(props) {
         ) : (
           <div className="showButton">
             <Button onClick={openCloseForm}>
-              {`Add a ${props.thread ? "Thread!" : "comment!"}`}
+              {`${props.thread ? "Start a new thread" : "Add a reply"}`}
             </Button>
           </div>
         )}
