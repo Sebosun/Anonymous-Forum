@@ -33,7 +33,7 @@ function Thread(props) {
   const getPostsFromThread = (expand) => {
     const db = firebase.firestore();
     let posts = [];
-    if (expand == "expand") {
+    if (expand === "expand") {
       posts = db
         .collection("board")
         .doc(props.id)
@@ -66,7 +66,7 @@ function Thread(props) {
   function onHideThread() {
     setThreadVisible((prevState) => !prevState);
     setTextOfHideThread((prevState) => {
-      if (prevState == "close") {
+      if (prevState === "close") {
         return props.user ? props.user : "Anyonymous";
       } else {
         return "close";
@@ -82,6 +82,7 @@ function Thread(props) {
   useEffect(() => {
     getNumberOfElements();
     getPostsFromThread("nope");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

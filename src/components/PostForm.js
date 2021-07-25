@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Button from "./UI/Button";
 import styles from "./PostForm.module.css";
 import { firebase } from "@firebase/app";

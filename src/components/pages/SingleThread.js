@@ -30,7 +30,7 @@ const SingleThread = () => {
         setThreadPost(firebaseThreads);
         getPostsFromThread(firebaseThreads[0].id);
       });
-  }, []);
+  }, [params]);
 
   const getPostsFromThread = (id) => {
     const db = firebase.firestore();

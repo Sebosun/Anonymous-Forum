@@ -19,6 +19,7 @@ const Image = (props) => {
   };
   return (
     <img
+      alt=""
       onClick={handleImageSize}
       src={props.src}
       className={styles.postImage}
