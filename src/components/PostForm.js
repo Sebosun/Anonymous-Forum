@@ -1,16 +1,15 @@
 import React, { useState } from "react";
+import UploadError from "./UploadError";
 import Button from "./UI/Button";
 import styles from "./PostForm.module.css";
 import { firebase } from "@firebase/app";
 
 function PostForm(props) {
-  // TODO text verification, atm you can post infinite amount of text and it looks shit, not to mention spammy
-  // TODO Captcha verification i guess
-
   const [name, setName] = useState("");
   const [text, setText] = useState("");
   const [title, setTitle] = useState("");
   const [image, setImage] = useState(null);
+  const [handleError, setHandleError] = useState(false);
 
   // increases the post number in meta collection
   async function incrPostNo() {
@@ -71,9 +70,16 @@ function PostForm(props) {
       .catch((error) => {});
   }
 
-  // adds the image to the state
+  // if its an image set state, if not show error
   const onFileChange = (e) => {
-    setImage(e.target.files[0]);
+    if (e.target.files[0].type.match("image.*")) {
+      console.log(e.target.files[0]);
+      setHandleError(false);
+      setImage(e.target.files[0]);
+    } else {
+      setHandleError(true);
+      e.target.value = null;
+    }
   };
 
   const onNameChange = (e) => {
@@ -100,63 +106,66 @@ function PostForm(props) {
   };
 
   return (
-    <div className={styles.Form}>
-      <form
-        onSubmit={(e) => {
-          onPostSubmit(e);
-        }}
-        className={styles.addForm}
-      >
-        <input
-          placeholder="name"
-          value={name}
-          type="text"
-          onChange={onNameChange}
-          className={styles.postName}
-          maxLength="25"
-        />
-        <input
-          placeholder="title"
-          value={title}
-          type="text"
-          onChange={(e) => {
-            setTitle(e.target.value);
+    <>
+      <div className={styles.Form}>
+        <form
+          onSubmit={(e) => {
+            onPostSubmit(e);
           }}
-          className={styles.postTitle}
-          maxLength="30"
-        />
-
-        <textarea
-          placeholder="comment"
-          value={text}
-          type="text"
-          onChange={(e) => {
-            setText(e.target.value);
-          }}
-          required
-          className={styles.postText}
-          maxLength="1000"
-        />
-
-        {/* TODO validation of the files, making sure they're images */}
-
-        {props.thread ? (
+          className={styles.addForm}
+        >
           <input
-            className={styles.postFile}
-            type="file"
-            onChange={onFileChange}
+            placeholder="name"
+            value={name}
+            type="text"
+            onChange={onNameChange}
+            className={styles.postName}
+            maxLength="25"
+          />
+          <input
+            placeholder="title"
+            value={title}
+            type="text"
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+            className={styles.postTitle}
+            maxLength="30"
+          />
+
+          <textarea
+            placeholder="comment"
+            value={text}
+            type="text"
+            onChange={(e) => {
+              setText(e.target.value);
+            }}
             required
+            className={styles.postText}
+            maxLength="1000"
           />
-        ) : (
-          <input
-            className={styles.postFile}
-            type="file"
-            onChange={onFileChange}
-          />
-        )}
-        <Button className={styles.postSubmit}>Submit</Button>
-      </form>
-    </div>
+
+          {props.thread ? (
+            <input
+              className={styles.postFile}
+              type="file"
+              onChange={onFileChange}
+              accept="image/*"
+              required
+            />
+          ) : (
+            <input
+              className={styles.postFile}
+              type="file"
+              accept="image/*"
+              onChange={onFileChange}
+            />
+          )}
+          <Button className={styles.postSubmit}>Submit</Button>
+        </form>
+      </div>
+      {handleError && <UploadError />}
+    </>
   );
 }
 
