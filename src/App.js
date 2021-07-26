@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { firebase } from "@firebase/app";
 import { Switch, Route } from "react-router-dom";
-
+import { AiFillGithub } from "react-icons/ai";
 import Threads from "./components/Threads";
 import Header from "./components/Header";
 import ShowPostForm from "./components/ShowPostForm";
@@ -48,6 +48,17 @@ function App() {
           <SingleThread />
         </Route>
       </Switch>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          paddingBottom: "10px",
+        }}
+      >
+        <a href="https://github.com/Sebosun/bes-chan">
+          <AiFillGithub color="black" size="2em" />
+        </a>
+      </div>
     </div>
   );
 }
