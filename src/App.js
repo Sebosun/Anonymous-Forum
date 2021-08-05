@@ -32,7 +32,7 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Header
-            chan="Bes's"
+            chan="Bes Chan"
             desc="We cannot guarantee that your brain won't explode"
           />
           <ShowPostForm thread={true} />
