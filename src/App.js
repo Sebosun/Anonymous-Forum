@@ -32,7 +32,7 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Header
-            chan="Bes Chan"
+            chan="The Forum"
             desc="We cannot guarantee that your brain won't explode"
           />
           <ShowPostForm thread={true} />
@@ -55,7 +55,7 @@ function App() {
           paddingBottom: "10px",
         }}
       >
-        <a href="https://github.com/Sebosun/bes-chan">
+        <a href="https://github.com/Sebosun/anonymous-forum">
           <AiFillGithub color="black" size="2em" />
         </a>
       </div>
