@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/anonymous-forum/static/css/main.1c762d7b.chunk.css",
+    "main.js": "/anonymous-forum/static/js/main.22e26d5a.chunk.js",
+    "main.js.map": "/anonymous-forum/static/js/main.22e26d5a.chunk.js.map",
+    "runtime-main.js": "/anonymous-forum/static/js/runtime-main.e71fa5a7.js",
+    "runtime-main.js.map": "/anonymous-forum/static/js/runtime-main.e71fa5a7.js.map",
+    "static/js/2.b8531ea1.chunk.js": "/anonymous-forum/static/js/2.b8531ea1.chunk.js",
+    "static/js/2.b8531ea1.chunk.js.map": "/anonymous-forum/static/js/2.b8531ea1.chunk.js.map",
+    "static/js/3.51a8f8b2.chunk.js": "/anonymous-forum/static/js/3.51a8f8b2.chunk.js",
+    "static/js/3.51a8f8b2.chunk.js.map": "/anonymous-forum/static/js/3.51a8f8b2.chunk.js.map",
+    "index.html": "/anonymous-forum/index.html",
+    "static/css/main.1c762d7b.chunk.css.map": "/anonymous-forum/static/css/main.1c762d7b.chunk.css.map",
+    "static/js/2.b8531ea1.chunk.js.LICENSE.txt": "/anonymous-forum/static/js/2.b8531ea1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e71fa5a7.js",
+    "static/js/2.b8531ea1.chunk.js",
+    "static/css/main.1c762d7b.chunk.css",
+    "static/js/main.22e26d5a.chunk.js"
+  ]
+}
